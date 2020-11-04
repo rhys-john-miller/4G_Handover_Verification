@@ -2,7 +2,7 @@
 
 This repository is a for the formal verification files of the 4G handover procedures of X2 and S1. 
 
-## File Structure
+## X2 File Structure
 
 The X2 folder contains the following proverif files:
 
@@ -16,6 +16,8 @@ These files contain the processes for the following entities: UE, seNode, teNode
 
 These files contain the single processes for the following entities: seNode and MME
 Along with multiple processes for the following entities: UE and teNode
+
+## S1 File Structure
 
 The S1 folder contains the following proverif files:
 
