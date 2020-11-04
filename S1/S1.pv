@@ -1,0 +1,364 @@
+(* 
+    S1 Protocol
+
+    Public Messages:
+    msg1 -- ms report
+    msg11
+    msg18
+
+    Ciphered Messages:
+    msg3  -- ho req, SN MME
+    msg5  -- ho req, MME TN 
+    msg7
+    msg8
+    msg9
+    msg10
+    msg14
+    msg15
+*)
+
+
+
+(*Channels for the Protocol Secret and Public*)
+free pubch : channel. 
+
+(*Key for encryptions and signature schemes.*)
+type key. 
+type sskey.
+type spkey.
+
+(*Security Algorithms*)
+type alg. 
+
+(*Capability Sets*)
+type caps. 
+
+(*--
+    Functions
+--*)
+
+(*Tobitstring Converter Function*)
+fun tobitstring (key) : bitstring[data,typeConverter].
+
+(*-----------------------------------------------------------------*)
+
+(*Encryption and Decryption Theory*)
+fun senc(alg, bitstring, key) : bitstring.
+reduc forall a: alg, msg: bitstring, k: key; sdec(a, senc(a,msg,k),k) = msg.
+
+(*Consset fuses alg and caps together to one list, with alg at the top/head of the list .*)
+fun consset (alg , caps ): caps [ data ]. const emptyset : caps.
+
+(*
+    Predicate mem represents the set membership between the Security Algorithms
+    and Capability Sets.
+*)
+pred mem(alg , caps).
+clauses 
+
+    (*The first clause states that mem(X,N) where n is the concatation of x and y*)
+    forall x : alg, y: caps; mem( x , consset(x, y));
+
+    (* The second clause states that mem(X,N) holds if N = consset(X′,N′)
+     and mem(X,N′) holds, that is, if X is in the tail of N.*)
+
+    forall x : alg, y: caps, z: alg; mem(x, y) -> mem(x, consset(z, y)).
+
+(*Key Derivation Function, i.e., takes in a bitstring and key to produce another key. Used for Key generation*)
+fun kdf(bitstring, key) : key.
+
+(*MAC function takes in alg and a key. To produce an authentication code*)
+fun mac (alg, key) : bitstring.
+
+(* Signature *)
+fun spk(sskey):spkey.
+fun sign(bitstring,sskey):bitstring.
+reduc forall m:bitstring,k:sskey; getmsg(sign(m,k))=m.
+reduc forall m:bitstring,k:sskey; verify(sign(m,k),spk(k))=m.
+
+
+(* --- Events --- *)
+(*Sanity check protocol can terminate.*) 
+event terminateSend(bitstring).   (* this is UE; it should stand from the 'sync' messages 16-18 being sent*)
+event terminateAccept(bitstring). (* this is in target node; it is now after 
+                                   reading the 'sync' messages but the modelling  there seems obsolete *)
+
+event kenbstarUE(key).
+event kenbstarTE(key).
+event kenbstarMME(key).
+
+(*Log when the UE Starts*)
+event UESendsMeasurementReport(bitstring,bitstring). (*after the report measurement; after msg1*)
+event TNReceivesHORequestFromMME(bitstring). (*after the HO Request is received in TN from MME; after message 5;*)
+event SNSendsHORequiredToMME(bitstring). (*after the HO Require is sent by SN to the MME; after message 3;*)
+event SNReceivesHOCommandFromMME(alg). (*after the HO Command is received in SN from MME; after message 10;*)
+
+event UEReceivesHOComand(alg).
+
+event endTransferTE(bitstring).
+event middleTransferMME(bitstring).
+event startTransfer(bitstring).
+
+(***** Query 1 *****)
+(*TNode is asked to do an HO for no reason, i.e., no UE has asked*)
+(* TN asked to swap by attacker not UE*)
+query b:bitstring, b1:bitstring, b2:bitstring;
+    event(TNReceivesHORequestFromMME(b)) ==> event(UESendsMeasurementReport(b1,b2)). 
+
+
+(*****Query 2*****)
+(*SNode is finishing  a HO for no reason, i.e., no UE has asked*)
+query a:alg, b1:bitstring, b2:bitstring;
+    event(SNReceivesHOCommandFromMME(a)) ==>  event(UESendsMeasurementReport(b1,b2)).
+
+(* ****Query 3*****)
+(*SNode is finishing HO Commands in the due steps, with no input for UE*)
+query a:alg, b1:bitstring, b2:bitstring, b3:bitstring;
+    (event(SNReceivesHOCommandFromMME(a)) && event(SNSendsHORequiredToMME(b3)) )  ==> event(UESendsMeasurementReport(b1,b2)) .
+ 
+(*****Query 4.A*****)
+(*TNode is transfering over, with no original ask for UE*)
+query b1:bitstring, ba:bitstring, bb:bitstring;
+  event(startTransfer(b1)) ==> event(UESendsMeasurementReport(ba,bb)).
+
+
+(*****Query 4.B***** --not incl. in the paper)
+(*TNode is transfering over, with no original ask for UE*)
+(*query b1:bitstring, ba:bitstring, bb:bitstring;
+  event(middleTransferMME(b1)) ==> event(UESendsMeasurementReport(ba,bb)).
+*)
+
+(*****Query 4.C***** --not incl. in the paper)
+(*TNode is transfering over, with no original ask for UE*) 
+(*query b1:bitstring, ba:bitstring, bb:bitstring;
+  event(endTransferTE(b1)) ==> event(UESendsMeasurementReport(ba,bb)).
+*)
+
+(*****Query 5*****)
+(*TNode and UE key disagreement*) 
+query k:key;
+  (event(kenbstarTE(k)) ==> event(kenbstarUE(k))).
+
+
+(*****Query 6*****)
+(*MME and UE key disagreement*) 
+query k:key;
+  (event(kenbstarMME(k)) ==> event(kenbstarUE(k))).
+
+
+(*****Query 7*****)
+(*TNode and MME key disagreement*) 
+query k:key;
+  (event(kenbstarMME(k)) ==> event(kenbstarTE(k))).
+
+(*****Query 8 -- not included in the paper*****)
+(*TNode inner functional correctness*)
+query b1:bitstring, b2:bitstring;
+    event(endTransferTE(b1)) ==> event(startTransfer(b2)).
+  
+(* UE process *)
+let UE(uecaps : caps, nh_2 : key, cellid:bitstring) =
+  
+    (*msg 1*)
+    (*Measurement Report.*)
+    new radioSignal:bitstring;
+    new PCI:bitstring;
+
+    event UESendsMeasurementReport(radioSignal,PCI);
+
+    out(pubch, (radioSignal, PCI)); (* TO ADD: public channel as per 3GPP specs release x.y*)
+
+    (*
+    --Handover Command 
+    1) Target C-RNTI -NOT NEEDED- 
+    2) Target DRB ID -NOT NEEDED-
+    3) Target eNB AS Security Algorithm
+    *)
+    in(pubch, (asAlg : alg)); (*msg 11*)
+
+    event UEReceivesHOComand(asAlg); 
+
+
+    (* this 'if' may be un-necessary; TBC*)
+    if (mem(asAlg, uecaps)) then
+
+        let kenbstar: key = kdf(cellid,nh_2) in
+
+        let macVal: bitstring = mac(asAlg, kenbstar) in
+        
+        let data: bitstring = senc(asAlg,macVal,kenbstar) in 
+        
+        event terminateSend(data);  
+
+        out(pubch, data);(*msg18*) 
+0.
+
+
+let MME(uecaps : caps, nh_2 : key, signK:sskey, pubkSN:spkey, pubkTN:spkey) =
+    
+    (*Requesting Handover*)
+    in(pubch, sigma1:bitstring); (*msg 3*)
+
+    let (handoverType:bitstring, targetCellID:bitstring, cellidSource:bitstring) = verify(sigma1, pubkSN) in 
+
+    let kenbstar: key = kdf(cellidSource,nh_2) in
+    event kenbstarMME(kenbstar);
+
+    let sigma2:bitstring = sign((uecaps,nh_2,cellidSource), signK) in
+
+     
+
+    (*Handover Request*)
+    out(pubch, sigma2); (*msg 5*)
+
+    (*Request Acknowledgment*)
+    in(pubch, (sigma3:bitstring));  (*msg 7*)
+
+    let (asAlg:alg, id1:bitstring, id2:bitstring)  = verify(sigma3, pubkTN) in 
+
+    let sigma4:bitstring = sign((asAlg,handoverType,targetCellID,cellidSource), signK) in
+
+    (*Handover Command*)
+    out(pubch, sigma4); (*msg 10*)
+
+
+    (*msg 14 eNB Status Transfer*)
+    in(pubch, sigma5:bitstring);
+
+    new DLCount:bitstring;
+    new ULCount:bitstring;
+
+    let (DLCount:bitstring, ULCount:bitstring) = verify(sigma5, pubkSN) in  
+
+    event middleTransferMME(sigma5);
+
+    let sigma6:bitstring = sign((DLCount,ULCount), signK) in 
+
+    (*msg 15 MME Status Transfer*)
+    out(pubch,sigma6);
+0.
+
+let SeNodeB(cellidSource: bitstring, signK:sskey, pubkMME:spkey) =
+    (*msg 1 Measurement Reports*)
+    in(pubch, (radioSignal:bitstring,PCI:bitstring));
+    
+    (*msg 2 Decision to handover*)
+    (*Handover Required*)
+    new targetCellID: bitstring;
+    new handoverType: bitstring;
+
+    let sigma1:bitstring = sign((handoverType,targetCellID,cellidSource), signK) in 
+
+    event SNSendsHORequiredToMME(targetCellID);
+
+    out(pubch, sigma1); (*msg 3*) 
+
+    (*Handover Command*)
+    in(pubch, sigma4:bitstring); (*msg 10*)
+
+    let (asAlg:alg, handoverType1:bitstring, targetCellID2:bitstring, cellidSource3:bitstring) = verify(sigma4, pubkMME) in 
+    
+    
+    event SNReceivesHOCommandFromMME(asAlg); 
+
+    (*UE Handover*)
+    out(pubch, asAlg); (*msg 11*)
+
+    new DLCount:bitstring;
+    new ULCount:bitstring;
+
+    let sigma5:bitstring = sign((DLCount,ULCount), signK) in 
+
+    event startTransfer(sigma5);
+
+    (*msg 14 eNB Status Transfer*)
+    out(pubch, sigma5);
+0.
+
+let TeNodeB(cellidTarget: bitstring, signK:sskey, pubkMME:spkey, pubkSN:spkey) =
+    (*Handover Request*)
+    in(pubch, sigma2:bitstring); (*msg 5*)
+
+    let (uecaps:caps, nh_2:key, cellidSource:bitstring) = verify(sigma2,pubkMME) in
+    
+    event TNReceivesHORequestFromMME(cellidSource);
+
+    let asAlg: alg suchthat mem(asAlg ,uecaps) in
+
+    let kenbstar: key = kdf(cellidSource,nh_2) in
+    event kenbstarTE(kenbstar); 
+    
+
+    (******msg 6******)
+
+    let sigma3:bitstring = sign((asAlg, cellidSource, cellidTarget), signK) in 
+
+    (*--Handover Request Acknowledgment*)
+    out(pubch, sigma3); (*msg 7*)
+
+
+    in(pubch, sigma6:bitstring);
+
+    event endTransferTE(sigma6);
+
+    let (DLCount:bitstring, ULCount:bitstring) = verify(sigma6, pubkMME) in 
+
+   (* event endTransferTE(sigma6); *)
+
+    (*Handover Confirm*)
+    in(pubch, (data: bitstring));
+
+    
+    let rrcmac : bitstring = sdec(asAlg, data, kenbstar) in
+    let macVal: bitstring = mac(asAlg, kenbstar) in
+
+    if rrcmac = macVal then 
+        event terminateAccept(data);
+0.
+
+(*--
+Main Process
+--*)
+process
+    (*UE's accepted Algs.*)
+    new a1: alg; 
+    new a2: alg;
+    (*
+        Key that would have been generated by the AKA protocol when it first 
+        communicates with base station.
+    *)
+    new keyAKA: key; 
+
+    (*Secret Key for Signatures.*)
+    new skSE:sskey;
+    new skTE:sskey;
+    new skMME:sskey;
+
+    (*Public Keys for Signatures.*)
+    let pkSE=spk(skSE) in 
+    let pkTE=spk(skTE) in 
+    let pkMME=spk(skMME) in 
+
+    (*Cell id of the base station we are trying to handover too.*)
+    new cellidSource: bitstring;
+    new cellidTarget: bitstring; 
+
+    (*Creates a set of Algorithms that are being supported by the UE*)
+    let uecaps = consset(a1, consset(a2,emptyset)) in
+
+    (*Starts the Protocol by declaring these variables on the public channel.
+    RRC Setup *)
+    out(pubch, (uecaps, cellidSource, cellidTarget));
+
+    (*if these are not created like so, we do not need these detailed declarations*)
+    let kenb : key = kdf(cellidSource, keyAKA) in
+    let nh_1 : key = kdf(tobitstring(kenb), keyAKA) in
+    let nh_2 : key = kdf(tobitstring(nh_1), keyAKA) in
+
+
+    (
+        (UE(uecaps, nh_2, cellidSource)) | 
+        (SeNodeB(cellidSource, skSE, pkMME)) |
+        (TeNodeB(cellidTarget, skTE, pkMME, pkSE)) | 
+        (MME(uecaps, nh_2,skMME, pkSE, pkTE)) 
+    )

@@ -1,0 +1,379 @@
+(*
+	
+	X2 Protocol in ProVerif
+
+
+    Public Messages:
+    msg1
+    msg8
+    msg14
+
+    Enc-Auth Messages:
+    msg2
+    msg3
+    msg4
+    msg5
+    msg6
+    msg7
+    msg9
+    msg10
+    msg11
+    msg12
+    msg13
+*)
+
+(*Channels for the Protocol Secret and Public*)
+free pubch : channel. 
+
+(*Constant Messages to alert failed or we are performing a packet switch request.*)
+free PSR:bitstring.
+free hndCMD:bitstring.
+free hndCMDACK:bitstring.
+free failMsg:bitstring.
+free okHandover:bitstring.
+
+(*--
+	Variables in the Protocol
+--*)
+
+(*Key for encryption*)
+type key. 
+type sskey.
+type spkey.
+
+(*Security Algorithms*)
+type alg. 
+
+(*Capability Sets*)
+type caps. 
+
+(*--
+	Functions
+--*)
+
+(*Tobitstring Converter Function*)
+fun tobitstring (key) : bitstring[data,typeConverter].
+
+(*-----------------------------------------------------------------*)
+(*-----------------General Encryption Functions--------------------*)
+
+(*Encryption and Decryption Functions*)
+fun senc(alg, bitstring, key) : bitstring.
+reduc forall a: alg, msg: bitstring, k: key; sdec(a, senc(a,msg,k),k) = msg.
+
+(*Consset fuses alg and caps together to one set.*)
+fun consset (alg , caps ): caps [ data ]. const emptyset : caps.
+
+(*
+	Predicate mem represents the set membership between the Security Algorithms
+	and Capability Sets.
+*)
+pred mem(alg , caps).
+clauses 
+    (*The first clause states that mem(X,N) where n is the concatation of x and y*)
+    forall x : alg, y: caps; mem( x , consset(x, y));
+    (* The second clause states that mem(X,N) holds if N = consset(X′,N′)
+     and mem(X,N′) holds, that is, if X is in the tail of N.*)
+    forall x : alg, y: caps, z: alg; mem(x, y) -> mem(x, consset(z, y)).
+
+(*KDF Function takes in a bitstring and key to produce another key. Used for Key generation*)
+fun kdf(bitstring, key) : key.
+
+(*MAC function takes in alg and a key. To produce an authentication code*)
+fun mac (alg, key) : bitstring.
+
+(*-----------------------------------------------------------------*)
+(*----------------- Signature Functions--------------*)
+
+(* Signature *)
+fun spk(sskey):spkey.
+fun sign(bitstring,sskey):bitstring.
+reduc forall m:bitstring,k:sskey; getmsg(sign(m,k))=m.
+reduc forall m:bitstring,k:sskey; verify(sign(m,k),spk(k))=m.
+
+(* --- Events --- *)
+
+(*Sanity check protocol can terminate.*) 
+event terminateSend(bitstring).
+event terminateAccept(key).
+
+event kenbstarUE(key).
+event kenbstarTE(key).
+event kenbstarSE(key).
+
+(*Log when the UE Starts*)
+event UESendsMeasurementReport(bitstring,bitstring). (*after the report measurement; after msg1*)
+event UESendsMeasurementReport2(bitstring,bitstring,key).
+event TNReceivesHORequestFromSE(bitstring). (*after the HO Request is received in TN from MME; after message 5;*)
+event SNSendsHORequiredToTE(bitstring). (*after the HO Require is sent by SN to the TN; after message 3;*)
+event SNReceivesHOCommandFromTE(alg). (*after the HO Command is received in SN from MME; after message 10;*)
+event UEReceivesHOComand(alg).
+
+(*Transfer Events*)
+event endTransferTE(bitstring).
+event middleTransferMME(bitstring).
+event startTransfer(bitstring).
+event sentUE(key).
+event receivedTN(key).
+
+event endTransferTE2(bitstring,key).
+event UESentMeasurementReport(bitstring,bitstring).
+event UESentMeasurementReport2(bitstring,bitstring,key).  
+
+
+
+(*--Query 8--*)
+query k:key;
+    (inj-event(kenbstarUE(k)) ==> inj-event(kenbstarTE(k))).
+
+(*--Query 9--*)
+query k:key;
+    (inj-event(kenbstarTE(k)) ==> inj-event(kenbstarSE(k))).
+
+
+
+
+(*--
+	Processes
+--*)
+
+(*
+    UE Process:
+
+	Construction of a User Equipments Device:
+	uecaps = algorithm supported by UE 
+	kenb = key
+	cellid = The id of target node used for key generation
+*)
+let UE(uecaps : caps, kenb: key, cellid : bitstring) =
+
+    (*msg 1*)
+    (*Measurement Report.*)
+    new radioSignal:bitstring;
+    new PCI:bitstring;
+
+    (*Log when the measurement report is sent.*)
+    event UESendsMeasurementReport(radioSignal,PCI)[kenb];
+
+
+    out(pubch, (radioSignal, PCI));
+    
+
+	(*Look at the secret channel for alg*)
+    in(pubch, rrcalg:alg);(*msg 8*) 
+
+    
+
+    event UEReceivesHOComand(rrcalg); 
+
+    event UESendsMeasurementReport2(radioSignal,cellid,kenb);
+
+    (*Check to ensure the algorithm is in the UE accepted algorithm.*)  
+    if (mem(rrcalg, uecaps)) then
+
+        (*Key encryption method*)
+        let kenbstar: key = kdf(cellid,kenb) in
+
+        (*Log UE kenbstar*)
+        event kenbstarUE(kenbstar);
+    
+        (*Mac Creation.*)
+        let macVal: bitstring = mac(rrcalg,kenbstar) in 
+
+        (*Method to encrypt the data between the mac, key and algorithms*)
+        let data: bitstring = senc(rrcalg,macVal,kenbstar) in
+        
+      out(pubch, data);(*msg 14*)
+
+0.
+
+
+
+(*
+	Source Node this is the node that are UE will start the process of at.
+
+	This function Takes in the following properties:
+	uecaps = algorithm supported by UE 
+	kenb = key of ue
+	cellid = The id of source node used for key generation
+*)
+let SeNodeB(uecaps: caps, kenb: key, cellid: bitstring, signk:sskey,pubkTE:spkey) =
+
+
+
+    (*Recieves the Measurement report*)
+    in(pubch,(radioSignal:bitstring,PCI:bitstring));
+
+    event SNSendsHORequiredToTE(cellid);
+
+
+	(*Takes the key and cellid to create an expected key.*)
+    let kenbstar: key = kdf(cellid, kenb) in
+
+    event kenbstarSE(kenbstar); 
+
+    let sigma1:bitstring = sign((kenbstar,uecaps), signk) in 
+
+    out(pubch, sigma1);
+
+    in(pubch, sigma2:bitstring);
+
+    let (rrcalg:alg, =hndCMD) = verify(sigma2, pubkTE) in 
+
+    let sigma3:bitstring = sign((kenbstar, hndCMDACK), signk) in 
+
+    (*msg7 Establish X2 Transport Bearer*)
+    out(pubch, sigma3);
+
+    in(pubch, =okHandover);
+
+    event SNReceivesHOCommandFromTE(rrcalg);
+
+    out(pubch, rrcalg);(*msg 8*) 
+
+    new snTransfer:bitstring;
+
+    event startTransfer(snTransfer);
+
+    let sigma4:bitstring = sign((snTransfer), signk) in 
+    
+    out(pubch, sigma4);
+0. 
+
+(*
+	Target Node B this is where we are trying to complete a handover to. 
+	No properties are taken into this function.
+*)
+let TeNodeB(cellid: bitstring, kenb: key, signk:sskey, pubkSN:spkey, pubkMME:spkey) =
+
+    event TNReceivesHORequestFromSE(cellid);
+
+ 
+    in(pubch, sigma1:bitstring);
+
+    let (kenbstar:key, uecaps:caps)  = verify(sigma1, pubkSN) in 
+
+ 
+    (*This is sent by the seNode*)
+    event kenbstarTE(kenbstar);
+    (*If they can find an algorithm that matchs the capability set output on the secret channel.*)
+    let rrcalg: alg suchthat mem(rrcalg, uecaps) in 
+
+    let sigma2:bitstring = sign((rrcalg, hndCMD), signk) in 
+
+    out(pubch, sigma2); (*msg6*)
+
+    in(pubch, sigma3:bitstring);
+
+    let (sourceKenbStar:key, =hndCMDACK)  = verify(sigma3, pubkSN) in 
+
+    if sourceKenbStar = kenbstar then
+        out(pubch, okHandover);
+    
+    if not(sourceKenbStar = kenbstar) then 
+        out(pubch, failMsg);
+
+    
+    in(pubch,sigma4:bitstring);
+
+    let (snTransfer:bitstring)  = verify(sigma4, pubkSN) in 
+
+    event startTransfer(snTransfer);
+
+    (*Looks on the public channel for the Handover Complete message*)
+    in(pubch, data: bitstring); (*msg 12/13/14*)
+    
+    event endTransferTE(data)[kenbstar]; 
+    event endTransferTE2(cellid,kenb);
+   
+    (*Decrypts the data to construct rrcmac*)
+    let rrcmac:bitstring = sdec(rrcalg, data, kenbstar) in
+       
+    
+    event receivedTN(kenbstar);
+    
+    (*Check if the mac from the expect key is the right mac*)
+    if rrcmac = mac(rrcalg, kenbstar) then
+        (*Event to log termination of the protocol.*)
+        event terminateSend(PSR);
+        let sigma5:bitstring = sign((PSR), signk) in 
+        out(pubch, sigma5); (*msg 17*)
+
+    (*Handover Complete*)
+    in(pubch, sigma6:bitstring); (*msg26*)
+    let (nh_2:key, =PSR)  = verify(sigma6, pubkMME) in 
+
+0.
+
+(*
+	Construction of the Mobile Management Entity.
+	This function Takes in the following properties:
+	nh_2 = Is derived from the KASME is to be used as a basis for the K∗eNB calculation in the next handover event 
+*)
+let MME(nh_2_UE1: key, kenb : key, signk:sskey,pubkTE:spkey) =
+
+	(*Looks at the secret channel for the Packet Switch Request*)
+    in(pubch, sigma5:bitstring);
+    
+    let (=PSR) = verify(sigma5, pubkTE) in 
+
+    (*Log event of termination ending.*)
+    event terminateAccept(nh_2_UE1);
+
+    let sigma6:bitstring = sign((nh_2_UE1, PSR), signk) in 
+
+    (*Broadcasts on the secret channel Ackknowledgement and the next hop 2 for next handover*)
+    out(pubch, sigma6);(*msg26*)
+0.
+
+(* --- Global Process --- *)
+process
+    (*UE's accepted Algs.*)
+    new a1: alg; 
+    new a2: alg;
+
+    (*
+        Key that would have been generated by the AKA protocol when it first 
+        communicates with base station.
+    *)
+    new ue1KeyAKA: key;
+    new ue2KeyAKA: key;
+
+    (*Secret Key for Signatures.*)
+    new skSE:sskey;
+    new skMME:sskey;
+
+    (*Public Keys for Signatures.*)
+    let pkSE=spk(skSE) in 
+    let pkMME=spk(skMME) in 
+
+
+    (*Creates a set of Algorithms that are being supported by the UE*)
+
+    (*Starts the Protocol by declaring these variables on the public channel.
+    RRC Setup 
+    *)
+
+    (*Setup of the keys for the protocol*)
+
+    
+    (*Sets up the process running with their given values.*)
+    (
+        !  new skTE:sskey; 
+        !new cellidSource:bitstring; 
+        !new cellidTarget:bitstring; 
+        !let kenbUE1 : key = kdf(cellidSource, ue1KeyAKA) in    
+        !let nh_1_UE1 : key = kdf(tobitstring(kenbUE1), ue1KeyAKA) in 
+        !let pkTE=spk(skTE) in         
+        !let uecaps = consset(a1, consset(a2,emptyset)) in
+        
+	(*!out(pubch, (uecaps,cellidSource,cellidTarget));*)
+        
+        !UE(uecaps, kenbUE1, cellidSource) |
+        
+        SeNodeB(uecaps, kenbUE1, cellidSource, skSE, pkTE) |
+        
+        !TeNodeB(cellidTarget, kenbUE1, skTE, pkSE, pkMME) |
+        
+        MME(nh_1_UE1, kenbUE1, skMME, pkTE) 
+    )
