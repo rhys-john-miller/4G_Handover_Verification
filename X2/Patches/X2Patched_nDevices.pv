@@ -120,58 +120,38 @@ event endTransferTE(bitstring).
 event middleTransferMME(bitstring).
 event startTransfer(bitstring).
 
-(*****Query 1 Synchronisation  Query*****)
 (*TNode is asked to do an HO for no reason, i.e., no UE has asked*)
 query b:bitstring, b1:bitstring, b2:bitstring;
     event(TNReceivesHORequestFromSE(b)) ==> event(UESendsMeasurementReport(b1,b2)). (* TN asked to swap for no reason*)
 
-(*****Query 2*****)
 (*SNode is finishing  a HO for no reason, i.e., no UE has asked*)
 query a:alg, b1:bitstring, b2:bitstring;
     event(SNReceivesHOCommandFromTE(a)) ==>  event(UESendsMeasurementReport(b1,b2)).
 
-(*****Query 3*****)
 (*SNode is finishing HO Commands in the due steps, with no input for UE*)
 query a:alg, b1:bitstring, b2:bitstring, b3:bitstring;
     (event(SNReceivesHOCommandFromTE(a)) && event(SNSendsHORequiredToTE(b3)) )  ==> event(UESendsMeasurementReport(b1,b2)) .
  
-(*****Query 4.A*****)
 (*TNode is transfering over, with no original ask for UE*) (*Need to
 investigate why this does not prove*)
 query b1:bitstring, ba:bitstring, bb:bitstring;
   event(startTransfer(b1)) ==> event(UESendsMeasurementReport(ba,bb)).
 
-(*****Query 4.B*****)
 (*TNode is transfering over, with no original ask for UE*) (*Need to
 investigate why this does not prove*)
 query b1:bitstring, ba:bitstring, bb:bitstring;
   event(endTransferTE(b1)) ==> event(UESendsMeasurementReport(ba,bb)).
 
-(*****Query 5*****)
 (*TNode is transfering over, with no original ask for UE*) (*Need to
 investigate why this does not prove*)
 query b1:bitstring, b2:bitstring;
     event(endTransferTE(b1)) ==> event(startTransfer(b2)).
 
-(*****Query 6*****)
-(*TNode is transfering over, with no original ask for UE*) 
+
+(*!injective agreement now holds*)
 query k:key;
-  (event(kenbstarTE(k)) ==> event(kenbstarUE(k))).
+    (inj-event(kenbstarUE(k)) ==> inj-event(kenbstarTE(k))).
 
-
-(*
-query k:key;
-    (event(kenbstarTeNode(k)) ==> event(kenbstarSeNode(k))).
-
-query k:key;
-    (event(kenbstarUE(k)) ==> event(kenbstarTeNode(k))).
-
-query k:key, b:bitstring;
-    (event(kenbstarTeNode(k)) ==> event(startUE(k,b))).
-
-query data:bitstring, k:key;
-    event(dataTeNode(data)) ==> event(kenbstarUE(k)). 
-*)
 
 (*--
     Processes
@@ -411,8 +391,8 @@ process
     
     (*Sets up the process running with their given values.*)
     (
-        (UE(ueIMSI ,uecaps, kenb, cellidSource, skUE, pkSE) ) |
-        (SeNodeB(uecaps, kenb, cellidSource, skSE, pkTE, pkUE)) |
-        (TeNodeB(cellidTarget, kenb, skTE, pkSE, pkMME, pkUE)) | 
-        (MME(nh_2, kenb, skMME, pkTE)) 
+        !(UE(ueIMSI ,uecaps, kenb, cellidSource, skUE, pkSE) ) |
+        !(SeNodeB(uecaps, kenb, cellidSource, skSE, pkTE, pkUE)) |
+        !(TeNodeB(cellidTarget, kenb, skTE, pkSE, pkMME, pkUE)) | 
+        !(MME(nh_2, kenb, skMME, pkTE)) 
     )
