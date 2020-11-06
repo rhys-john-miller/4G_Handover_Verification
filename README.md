@@ -17,6 +17,10 @@ These files contain the processes for the following entities: UE, seNode, teNode
 These files contain the single processes for the following entities: seNode and MME
 Along with multiple processes for the following entities: UE and teNode
 
+The following file is for the forward secrecy attack on the X2 protocol: 
+
+- X2_forwardSecrecy.pv
+
 ## S1 File Structure
 
 The S1 folder contains the following proverif files:
@@ -32,6 +36,10 @@ These files contain the processes for the following entities: UE, seNode, teNode
 These files contain the single processes for the following entities: seNode and MME
 Along with multiple processes for the following entities: UE and teNode
 
+## Traces
+
+This folder contains all of the trace for all the attacks found on the LTE handover protocols.
+
 ## Submission
 
-These files are in support of the paper being submitted to Euro S&P 2021: Formal Security Analysis of 4G LTE Handovers.
+These files are in support of the paper being submitted to a conference.
