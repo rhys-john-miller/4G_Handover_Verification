@@ -1,4 +1,4 @@
-#4G_Handover_Verification
+# 4G_Handover_Verification
 
 This repository is a for the formal verification files of the 4G handover procedures of X2 and S1.
 
@@ -20,7 +20,7 @@ The following file is for the forward secrecy attack on the X2 protocol:
 
 - X2_forwardSecrecy.pv
 
-##S1 File Structure
+## S1 File Structure
 
 The S1 folder contains the following proverif files:
 
@@ -34,10 +34,10 @@ The files above contain a main process with just one session of the following en
 
 The files above contain a main process with multiple entities UE, source Node, target Node and MME, adn/or multiple sessions thereof. The "S1_ndevices.pv" file encodes the original S1 protocol and the "S1_ndevices_patched.pv" file encodes our new, secure version of S1, in this setting.
 
-##Traces
+## Traces
 
 This folder contains some exemple of traces for the attacks we found on these LTE handover protocols.
 
-##Submission
+## Submission
 
 These files are in support of a paper being submitted to a conference.
