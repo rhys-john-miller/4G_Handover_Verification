@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: clauses for query 5</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Initial clauses</H1>
+
+<ul>
+
+<li><a name=clause0>Clause 0:</a> <span class="pred">mem</span>(<span class="var">x_5103</span>,<span class="var">y_5105</span>) <span class="conn">-&gt;</span> <span class="pred">mem</span>(<span class="var">x_5103</span>,<span class="fun">consset</span>(<span class="var">z_5104</span>,<span class="var">y_5105</span>))<br>
+<span class="explain">(This clause is given in the input file.)</span><br>
+
+<li><a name=clause1>Clause 1:</a> <span class="pred">mem</span>(<span class="var">x_5118</span>,<span class="fun">consset</span>(<span class="var">x_5118</span>,<span class="var">y_5119</span>))<br>
+<span class="explain">(This clause is given in the input file.)</span><br>
+
+<li><a name=clause2>Clause 2:</a> <span class="pred">attacker</span>(<span class="fun">true</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">true</span>.)</span><br>
+
+<li><a name=clause3>Clause 3:</a> <span class="pred">attacker</span>(<span class="var">v_5133</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">spk</span>(<span class="var">v_5133</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">spk</span>.)</span><br>
+
+<li><a name=clause4>Clause 4:</a> <span class="pred">attacker</span>(<span class="var">v_5136</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5137</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="var">v_5136</span>,<span class="var">v_5137</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">sign</span>.)</span><br>
+
+<li><a name=clause5>Clause 5:</a> <span class="pred">attacker</span>(<span class="var">v_5141</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5142</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5143</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">senc</span>(<span class="var">v_5141</span>,<span class="var">v_5142</span>,<span class="var">v_5143</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">senc</span>.)</span><br>
+
+<li><a name=clause6>Clause 6:</a> <span class="pred">attacker</span>(<span class="var">a_5144</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">senc</span>(<span class="var">a_5144</span>,<span class="var">msg_5145</span>,<span class="var">k_5146</span>)) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">k_5146</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">msg_5145</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">sdec</span>.)</span><br>
+
+<li><a name=clause7>Clause 7:</a> <span class="pred">attacker</span>(<span class="var">v_5159</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5160</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">mac</span>(<span class="var">v_5159</span>,<span class="var">v_5160</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">mac</span>.)</span><br>
+
+<li><a name=clause8>Clause 8:</a> <span class="pred">attacker</span>(<span class="var">v_5163</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5164</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">kdf</span>(<span class="var">v_5163</span>,<span class="var">v_5164</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">kdf</span>.)</span><br>
+
+<li><a name=clause9>Clause 9:</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="var">m_5165</span>,<span class="var">k_5166</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">m_5165</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">getmsg</span>.)</span><br>
+
+<li><a name=clause10>Clause 10:</a> <span class="pred">attacker</span>(<span class="fun">false</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">false</span>.)</span><br>
+
+<li><a name=clause11>Clause 11:</a> <span class="pred">attacker</span>(<span class="fun">emptyset</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">emptyset</span>.)</span><br>
+
+<li><a name=clause12>Clause 12:</a> <span class="pred">attacker</span>(<span class="var">v_5170</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5171</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">consset</span>(<span class="var">v_5170</span>,<span class="var">v_5171</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">consset</span>.)</span><br>
+
+<li><a name=clause13>Clause 13:</a> <span class="pred">attacker</span>(<span class="fun">consset</span>(<span class="var">v_5172</span>,<span class="var">v_5173</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5172</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">1-proj-consset</span>.)</span><br>
+
+<li><a name=clause14>Clause 14:</a> <span class="pred">attacker</span>(<span class="fun">consset</span>(<span class="var">v_5175</span>,<span class="var">v_5176</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5176</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">2-proj-consset</span>.)</span><br>
+
+<li><a name=clause15>Clause 15:</a> <span class="pred">attacker</span>(<span class="var">v_5185</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5186</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5187</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5185</span>,<span class="var">v_5186</span>,<span class="var">v_5187</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">3-tuple</span>.)</span><br>
+
+<li><a name=clause16>Clause 16:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5188</span>,<span class="var">v_5189</span>,<span class="var">v_5190</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5188</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">1-proj-3-tuple</span>.)</span><br>
+
+<li><a name=clause17>Clause 17:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5192</span>,<span class="var">v_5193</span>,<span class="var">v_5194</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5193</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">2-proj-3-tuple</span>.)</span><br>
+
+<li><a name=clause18>Clause 18:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5196</span>,<span class="var">v_5197</span>,<span class="var">v_5198</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5198</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">3-proj-3-tuple</span>.)</span><br>
+
+<li><a name=clause19>Clause 19:</a> <span class="pred">attacker</span>(<span class="var">v_5202</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5203</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5202</span>,<span class="var">v_5203</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">2-tuple</span>.)</span><br>
+
+<li><a name=clause20>Clause 20:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5204</span>,<span class="var">v_5205</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5204</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">1-proj-2-tuple</span>.)</span><br>
+
+<li><a name=clause21>Clause 21:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5207</span>,<span class="var">v_5208</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5208</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">2-proj-2-tuple</span>.)</span><br>
+
+<li><a name=clause22>Clause 22:</a> <span class="pred">attacker</span>(<span class="var">v_5211</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5211</span>))<br>
+<span class="explain">(The attacker applies function <span class="fun">1-tuple</span>.)</span><br>
+
+<li><a name=clause23>Clause 23:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_5212</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5212</span>)<br>
+<span class="explain">(The attacker applies function <span class="fun">1-proj-1-tuple</span>.)</span><br>
+
+<li><a name=clause24>Clause 24:</a> <span class="pred">mess</span>(<span class="var">v_5215</span>,<span class="var">v_5214</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5215</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">v_5214</span>)<br>
+<span class="explain">(The attacker can listen on all channels it has.)</span><br>
+
+<li><a name=clause25>Clause 25:</a> <span class="pred">attacker</span>(<span class="var">v_5217</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_5216</span>) <span class="conn">-&gt;</span> <span class="pred">mess</span>(<span class="var">v_5217</span>,<span class="var">v_5216</span>)<br>
+<span class="explain">(The attacker can send messages it has on all channels it has.)</span><br>
+
+<li><a name=clause26>Clause 26:</a> <span class="pred">attacker</span>(<span class="fun">fail-any</span>)<br>
+<span class="explain">(Initial knowledge of the attacker.)</span><br>
+
+<li><a name=clause27>Clause 27:</a> <span class="pred">attacker</span>(<span class="name">pubch</span>[])<br>
+<span class="explain">(Initial knowledge of the attacker.)</span><br>
+
+<li><a name=clause28>Clause 28:</a> <span class="pred">attacker</span>(<span class="name">okHandover</span>[])<br>
+<span class="explain">(Initial knowledge of the attacker.)</span><br>
+
+<li><a name=clause29>Clause 29:</a> <span class="pred">attacker</span>(<span class="name">hndCMDACK</span>[])<br>
+<span class="explain">(Initial knowledge of the attacker.)</span><br>
+
+<li><a name=clause30>Clause 30:</a> <span class="pred">attacker</span>(<span class="name">hndCMD</span>[])<br>
+<span class="explain">(Initial knowledge of the attacker.)</span><br>
+
+<li><a name=clause31>Clause 31:</a> <span class="pred">attacker</span>(<span class="name">failMsg</span>[])<br>
+<span class="explain">(Initial knowledge of the attacker.)</span><br>
+
+<li><a name=clause32>Clause 32:</a> <span class="pred">attacker</span>(<span class="name">PSR</span>[])<br>
+<span class="explain">(Initial knowledge of the attacker.)</span><br>
+
+<li><a name=clause33>Clause 33:</a> <span class="pred">equal</span>(<span class="var">v_5219</span>,<span class="var">v_5219</span>)<br>
+<span class="explain">(Definition of equal.)</span><br>
+
+<li><a name=clause34>Clause 34:</a> <span class="pred">attacker</span>(<span class="var">new-name_5782</span>)<br>
+<span class="explain">(The attacker can create new names.)</span><br>
+Abbreviations:
+<ul>
+
+<li><span class="var">new-name_5782</span> <span class="conn">=</span> <span class="name">new-name</span>[!att = <span class="var">v_5220</span>]
+</ul>
+
+<li><a name=clause35>Clause 35:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)),<span class="name">cellidSource</span>[],<span class="name">cellidTarget</span>[]))<br>
+<span class="explain">(The message <span class="fun"></span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)),<span class="name">cellidSource</span>[],<span class="name">cellidTarget</span>[]) may be sent to the attacker at output <a href="process_0.html#occ13" target="process" class="occ">{13}</a>.)</span><br>
+
+<li><a name=clause36>Clause 36:</a> <span class="pred">end</span>(<span class="fun">UESendsMeasurementReport</span>(<span class="name">radioSignal</span>[],<span class="name">PCI</span>[]))<br>
+<span class="explain">(Event <span class="fun">UESendsMeasurementReport</span>(<span class="name">radioSignal</span>[],<span class="name">PCI</span>[]) may be executed at <a href="process_0.html#occ19" target="process" class="occ">{19}</a>.)</span><br>
+
+<li><a name=clause37>Clause 37:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="name">radioSignal</span>[],<span class="name">PCI</span>[]))<br>
+<span class="explain">(The message <span class="fun"></span>(<span class="name">radioSignal</span>[],<span class="name">PCI</span>[]) may be sent to the attacker at output <a href="process_0.html#occ20" target="process" class="occ">{20}</a>.)</span><br>
+
+<li><a name=clause38>Clause 38:</a> <span class="pred">mem</span>(<span class="var">rrcalg_5375</span>,<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))) <span class="conn">&amp;&amp;</span> <span class="pred">begin</span>(<span class="fun">UEReceivesHOComand</span>(<span class="var">rrcalg_5375</span>)) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">rrcalg_5375</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">senc</span>(<span class="var">rrcalg_5375</span>,<span class="fun">mac</span>(<span class="var">rrcalg_5375</span>,<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))),<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))))<br>
+<span class="explain">(If the message <span class="var">rrcalg_5375</span> is received from the attacker at input <a href="process_0.html#occ21" target="process" class="occ">{21}</a>,<br>
+event <span class="fun">UEReceivesHOComand</span>(<span class="var">rrcalg_5375</span>) is executed at <a href="process_0.html#occ22" target="process" class="occ">{22}</a>,<br>
+<span class="pred">mem</span>(<span class="var">rrcalg_5375</span>,<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))) is true at <a href="process_0.html#occ23" target="process" class="occ">{23}</a>,<br>
+then the message <span class="fun">senc</span>(<span class="var">rrcalg_5375</span>,<span class="fun">mac</span>(<span class="var">rrcalg_5375</span>,<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))),<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))) may be sent to the attacker at output <a href="process_0.html#occ28" target="process" class="occ">{28}</a>.)</span><br>
+
+<li><a name=clause39>Clause 39:</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_5430</span>,<span class="var">PCI_5431</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]))<br>
+<span class="explain">(If the message <span class="fun"></span>(<span class="var">radioSignal_5430</span>,<span class="var">PCI_5431</span>) is received from the attacker at input <a href="process_0.html#occ29" target="process" class="occ">{29}</a>,<br>
+then the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ34" target="process" class="occ">{34}</a>.)</span><br>
+
+<li><a name=clause40>Clause 40:</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5458</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_5459</span>,<span class="var">PCI_5460</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[]))<br>
+<span class="explain">(If the message <span class="fun"></span>(<span class="var">radioSignal_5459</span>,<span class="var">PCI_5460</span>) is received from the attacker at input <a href="process_0.html#occ29" target="process" class="occ">{29}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5458</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]) is received from the attacker at input <a href="process_0.html#occ35" target="process" class="occ">{35}</a>,<br>
+then the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ38" target="process" class="occ">{38}</a>.)</span><br>
+
+<li><a name=clause41>Clause 41:</a> <span class="pred">attacker</span>(<span class="name">okHandover</span>[]) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5469</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_5470</span>,<span class="var">PCI_5471</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="var">rrcalg_5469</span>)<br>
+<span class="explain">(If the message <span class="fun"></span>(<span class="var">radioSignal_5470</span>,<span class="var">PCI_5471</span>) is received from the attacker at input <a href="process_0.html#occ29" target="process" class="occ">{29}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5469</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]) is received from the attacker at input <a href="process_0.html#occ35" target="process" class="occ">{35}</a>,<br>
+the message <span class="name">okHandover</span>[] is received from the attacker at input <a href="process_0.html#occ39" target="process" class="occ">{39}</a>,<br>
+then the message <span class="var">rrcalg_5469</span> may be sent to the attacker at output <a href="process_0.html#occ41" target="process" class="occ">{41}</a>.)</span><br>
+
+<li><a name=clause42>Clause 42:</a> <span class="pred">attacker</span>(<span class="name">okHandover</span>[]) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5477</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_5478</span>,<span class="var">PCI_5479</span>)) <span class="conn">-&gt;</span> <span class="pred">end</span>(<span class="fun">startTransfer</span>(<span class="var">snTransfer_5783</span>))<br>
+<span class="explain">(If the message <span class="fun"></span>(<span class="var">radioSignal_5478</span>,<span class="var">PCI_5479</span>) is received from the attacker at input <a href="process_0.html#occ29" target="process" class="occ">{29}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5477</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]) is received from the attacker at input <a href="process_0.html#occ35" target="process" class="occ">{35}</a>,<br>
+the message <span class="name">okHandover</span>[] is received from the attacker at input <a href="process_0.html#occ39" target="process" class="occ">{39}</a>,<br>
+then event <span class="fun">startTransfer</span>(<span class="var">snTransfer_5783</span>) may be executed at <a href="process_0.html#occ43" target="process" class="occ">{43}</a>.)</span><br>
+Abbreviations:
+<ul>
+
+<li><span class="var">snTransfer_5783</span> <span class="conn">=</span> <span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5477</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_5479</span>,radioSignal_35 = <span class="var">radioSignal_5478</span>]
+</ul>
+
+<li><a name=clause43>Clause 43:</a> <span class="pred">attacker</span>(<span class="name">okHandover</span>[]) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5491</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_5492</span>,<span class="var">PCI_5493</span>)) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="var">snTransfer_5784</span>,<span class="name">skSE</span>[]))<br>
+<span class="explain">(If the message <span class="fun"></span>(<span class="var">radioSignal_5492</span>,<span class="var">PCI_5493</span>) is received from the attacker at input <a href="process_0.html#occ29" target="process" class="occ">{29}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5491</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]) is received from the attacker at input <a href="process_0.html#occ35" target="process" class="occ">{35}</a>,<br>
+the message <span class="name">okHandover</span>[] is received from the attacker at input <a href="process_0.html#occ39" target="process" class="occ">{39}</a>,<br>
+then the message <span class="fun">sign</span>(<span class="var">snTransfer_5784</span>,<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ45" target="process" class="occ">{45}</a>.)</span><br>
+Abbreviations:
+<ul>
+
+<li><span class="var">snTransfer_5784</span> <span class="conn">=</span> <span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5491</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_5493</span>,radioSignal_35 = <span class="var">radioSignal_5492</span>]
+</ul>
+
+<li><a name=clause44>Clause 44:</a> <span class="pred">mem</span>(<span class="var">rrcalg_5555</span>,<span class="var">uecaps_5556</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">kenbstar_5557</span>,<span class="var">uecaps_5556</span>),<span class="name">skSE</span>[])) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5555</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]))<br>
+<span class="explain">(If the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">kenbstar_5557</span>,<span class="var">uecaps_5556</span>),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ46" target="process" class="occ">{46}</a>,<br>
+<span class="pred">mem</span>(<span class="var">rrcalg_5555</span>,<span class="var">uecaps_5556</span>) is true at <a href="process_0.html#occ50" target="process" class="occ">{50}</a>,<br>
+then the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">rrcalg_5555</span>,<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ52" target="process" class="occ">{52}</a>.)</span><br>
+
+<li><a name=clause45>Clause 45:</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5568</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">mem</span>(<span class="var">rrcalg_5569</span>,<span class="var">uecaps_5570</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5568</span>,<span class="var">uecaps_5570</span>),<span class="name">skSE</span>[])) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="name">okHandover</span>[])<br>
+<span class="explain">(If the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5568</span>,<span class="var">uecaps_5570</span>),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ46" target="process" class="occ">{46}</a>,<br>
+<span class="pred">mem</span>(<span class="var">rrcalg_5569</span>,<span class="var">uecaps_5570</span>) is true at <a href="process_0.html#occ50" target="process" class="occ">{50}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5568</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ53" target="process" class="occ">{53}</a>,<br>
+then the message <span class="name">okHandover</span>[] may be sent to the attacker at output <a href="process_0.html#occ57" target="process" class="occ">{57}</a>.)</span><br>
+
+<li><a name=clause46>Clause 46:</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="var">snTransfer_5582</span>,<span class="name">skSE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5583</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">mem</span>(<span class="var">rrcalg_5584</span>,<span class="var">uecaps_5585</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5583</span>,<span class="var">uecaps_5585</span>),<span class="name">skSE</span>[])) <span class="conn">-&gt;</span> <span class="pred">end</span>(<span class="fun">startTransfer</span>(<span class="var">snTransfer_5582</span>))<br>
+<span class="explain">(If the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5583</span>,<span class="var">uecaps_5585</span>),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ46" target="process" class="occ">{46}</a>,<br>
+<span class="pred">mem</span>(<span class="var">rrcalg_5584</span>,<span class="var">uecaps_5585</span>) is true at <a href="process_0.html#occ50" target="process" class="occ">{50}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5583</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ53" target="process" class="occ">{53}</a>,<br>
+the message <span class="fun">sign</span>(<span class="var">snTransfer_5582</span>,<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ58" target="process" class="occ">{58}</a>,<br>
+then event <span class="fun">startTransfer</span>(<span class="var">snTransfer_5582</span>) may be executed at <a href="process_0.html#occ60" target="process" class="occ">{60}</a>.)</span><br>
+
+<li><a name=clause47>Clause 47:</a> <span class="pred">attacker</span>(<span class="fun">senc</span>(<span class="var">a_5624</span>,<span class="fun">mac</span>(<span class="var">a_5624</span>,<span class="var">k_5625</span>),<span class="var">k_5625</span>)) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="var">snTransfer_5626</span>,<span class="name">skSE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">k_5625</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">mem</span>(<span class="var">a_5624</span>,<span class="var">uecaps_5627</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">k_5625</span>,<span class="var">uecaps_5627</span>),<span class="name">skSE</span>[])) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="name">PSR</span>[],<span class="name">skTE</span>[]))<br>
+<span class="explain">(If the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">k_5625</span>,<span class="var">uecaps_5627</span>),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ46" target="process" class="occ">{46}</a>,<br>
+<span class="pred">mem</span>(<span class="var">a_5624</span>,<span class="var">uecaps_5627</span>) is true at <a href="process_0.html#occ50" target="process" class="occ">{50}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">k_5625</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ53" target="process" class="occ">{53}</a>,<br>
+the message <span class="fun">sign</span>(<span class="var">snTransfer_5626</span>,<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ58" target="process" class="occ">{58}</a>,<br>
+the message <span class="fun">senc</span>(<span class="var">a_5624</span>,<span class="fun">mac</span>(<span class="var">a_5624</span>,<span class="var">k_5625</span>),<span class="var">k_5625</span>) is received from the attacker at input <a href="process_0.html#occ61" target="process" class="occ">{61}</a>,<br>
+then the message <span class="fun">sign</span>(<span class="name">PSR</span>[],<span class="name">skTE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ67" target="process" class="occ">{67}</a>.)</span><br>
+
+<li><a name=clause48>Clause 48:</a> <span class="var">sourceKenbStar_5697</span> <span class="conn">&lt;&gt;</span> <span class="var">kenbstar_5700</span> <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5697</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[])) <span class="conn">&amp;&amp;</span> <span class="pred">mem</span>(<span class="var">rrcalg_5698</span>,<span class="var">uecaps_5699</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="var">kenbstar_5700</span>,<span class="var">uecaps_5699</span>),<span class="name">skSE</span>[])) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="name">failMsg</span>[])<br>
+<span class="explain">(If the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">kenbstar_5700</span>,<span class="var">uecaps_5699</span>),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ46" target="process" class="occ">{46}</a>,<br>
+<span class="pred">mem</span>(<span class="var">rrcalg_5698</span>,<span class="var">uecaps_5699</span>) is true at <a href="process_0.html#occ50" target="process" class="occ">{50}</a>,<br>
+the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="var">sourceKenbStar_5697</span>,<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[]) is received from the attacker at input <a href="process_0.html#occ53" target="process" class="occ">{53}</a>,<br>
+<span class="var">sourceKenbStar_5697</span> <span class="conn">&lt;&gt;</span> <span class="var">kenbstar_5700</span><br>
+then the message <span class="name">failMsg</span>[] may be sent to the attacker at output <a href="process_0.html#occ56" target="process" class="occ">{56}</a>.)</span><br>
+
+<li><a name=clause49>Clause 49:</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="name">PSR</span>[],<span class="name">skTE</span>[])) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]),<span class="name">PSR</span>[]),<span class="name">skMME</span>[]))<br>
+<span class="explain">(If the message <span class="fun">sign</span>(<span class="name">PSR</span>[],<span class="name">skTE</span>[]) is received from the attacker at input <a href="process_0.html#occ70" target="process" class="occ">{70}</a>,<br>
+then the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]),<span class="name">PSR</span>[]),<span class="name">skMME</span>[]) may be sent to the attacker at output <a href="process_0.html#occ74" target="process" class="occ">{74}</a>.)</span><br>
+
+</ul>
+</body>
+</html>

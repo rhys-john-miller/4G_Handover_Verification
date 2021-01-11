@@ -49,6 +49,9 @@ type caps.
 (*Nonce Type*)
 type nonce.
 
+(*SUPI Type*)
+type supi.
+
 (*IMSI Type*)
 type imsi.
 
@@ -66,8 +69,8 @@ fun noncetobitstring(nonce):bitstring[data,typeConverter].
 (*-----------------General Encryption Functions--------------------*)
 
 (*Encryption and Decryption Functions*)
-fun senc(alg, bitstring, key) : bitstring.
-reduc forall a: alg, msg: bitstring, k: key; sdec(a, senc(a,msg,k),k) = msg.
+fun senc(bitstring, key) : bitstring.
+reduc forall msg: bitstring, k: key; sdec(senc(msg,k),k) = msg.
 
 (*Consset fuses alg and caps together to one set.*)
 fun consset (alg , caps ): caps [ data ]. const emptyset : caps.
@@ -185,20 +188,20 @@ query data:bitstring, k:key;
     kenb = key
     cellid = The id of target node used for key generation
 *)
-let UE(ueIMSI:imsi, uecaps : caps, kenb: key, cellid : bitstring, signK:sskey, pubkSN:spkey) =  
+let UE(ueSUPI:supi, ueIMSI:imsi, uecaps:caps, kenb:key, cellid:bitstring, signK:sskey, pubkSN:spkey) =  
 
     (*msg 1*)
     (*Measurement Report.*)
     new radioSignal:bitstring;
     new PCI:bitstring;
-    new ueNa:nonce;
+    new t1:nonce;
 
     (*Log when the measurement report is sent.*)
     event UESendsMeasurementReport(radioSignal,PCI);
 
-    let (patchSigmaMSR:bitstring) = sign((radioSignal, PCI, ueNa, ueIMSI), signK) in 
+    let test: bitstring = senc((radioSignal, PCI, t1, ueSUPI),kenb) in
 
-    out(pubch, patchSigmaMSR);
+    out(pubch, test);
 
 
 
@@ -225,7 +228,7 @@ let UE(ueIMSI:imsi, uecaps : caps, kenb: key, cellid : bitstring, signK:sskey, p
         let macVal: bitstring = mac(asAlg,kenbstar) in 
 
         (*Method to encrypt the data between the mac, key and algorithms*)
-        let data: bitstring = senc(asAlg,macVal,kenbstar) in
+        let data: bitstring = senc((asAlg,macVal),kenbstar) in
         
         let (patchSigmaHC:bitstring) = sign((data, ueNa, ueIMSI), signK) in 
   
@@ -242,16 +245,11 @@ let UE(ueIMSI:imsi, uecaps : caps, kenb: key, cellid : bitstring, signK:sskey, p
 let SeNodeB(uecaps: caps, kenb: key, cellid: bitstring, signk:sskey, pubkTE:spkey, pubkUE:spkey) =
 
     (*msg 1 Measurement Reports*)
-    in(pubch, patchSigmaMSR:bitstring);
-
-    let (radioSignal:bitstring, PCI:bitstring, ueNaFromUE:nonce, ueIMSI:imsi) = verify(patchSigmaMSR, pubkUE) in 
+    in(pubch, testSE:bitstring);
 
     event SNSendsHORequiredToTE(cellid);
 
-    (*Takes the key and cellid to create an expected key.*)
-    let kenbstar: key = kdf(cellid, kenb) in
-
-    let sigma1:bitstring = sign((kenbstar,uecaps), signk) in 
+    let sigma1:bitstring = sign((testSE), signk) in 
 
     out(pubch, sigma1);
 
@@ -290,7 +288,13 @@ let TeNodeB(cellid: bitstring, kenb: key, signk:sskey, pubkSN:spkey, pubkMME:spk
 
     in(pubch, sigma1:bitstring);
 
-    let (kenbstar:key, uecaps:caps)  = verify(sigma1, pubkSN) in 
+    let (testSE:bitstring)  = verify(sigma1, pubkSN) in 
+
+    let (radioSignal:bitstring, PCI:bitstring, t1:nonce, ueSUPI:supi)  = sdec(testSE, kenb) in 
+
+    (*Takes the key and cellid to create an expected key.*)
+    let kenbstar: key = kdf(cellid, kenb) in
+
 
     event TNReceivesHORequestFromSE(cellid);
  
@@ -308,41 +312,39 @@ let TeNodeB(cellid: bitstring, kenb: key, signk:sskey, pubkSN:spkey, pubkMME:spk
 
     let (sourceKenbStar:key, =hndCMDACK)  = verify(sigma3, pubkSN) in 
 
-    if sourceKenbStar = kenbstar then
-        out(pubch, okHandover);
-    
     if not(sourceKenbStar = kenbstar) then 
-        out(pubch, failMsg);
+        out(pubch, failMsg)
+    else (
 
-    
-    in(pubch,sigma4:bitstring);
+        out(pubch, okHandover);
 
-    let (snTransfer:bitstring)  = verify(sigma4, pubkSN) in 
+        in(pubch,sigma4:bitstring);
 
-    event startTransfer(snTransfer);
+        let (snTransfer:bitstring)  = verify(sigma4, pubkSN) in 
 
-    (*Handover Confirm*)
-    in(pubch, patchSigmaHC: bitstring);
+        event startTransfer(snTransfer);
 
-    let (data:bitstring, ueNaFromUE:nonce, ueIMSI:imsi) = verify(patchSigmaHC, pubkUE) in 
+        (*Handover Confirm*)
+        in(pubch, patchSigmaHC: bitstring);
 
-    (*if ueNaFromUE = ueNaFromSE then*)
-    
-    (*Decrypts the data to construct rrcmac*)
-    let rrcmac:bitstring = sdec(rrcalg, data, kenbstar) in
-    
-    (*Check if the mac from the expect key is the right mac*)
-    if rrcmac = mac(rrcalg, kenbstar) then
-        (*Event to log termination of the protocol.*)
-        event terminateSend(PSR);
-        let sigma5:bitstring = sign((PSR), signk) in 
-        out(pubch, sigma5); (*msg 17*)
+        let (data:bitstring, ueNaFromUE:nonce, ueIMSI:imsi) = verify(patchSigmaHC, pubkUE) in 
 
-    (*Handover Complete*)
-    in(pubch, sigma6:bitstring); (*msg26*)
-    let (nh_2:key, =PSR)  = verify(sigma6, pubkMME) in 
+        (*Decrypts the data to construct rrcmac*)
+        let rrcmac:bitstring = sdec(rrcalg, data, kenbstar) in
 
-0.
+        event endTransferTE(rrcmac);
+        
+        (*Check if the mac from the expect key is the right mac*)
+        if rrcmac = mac(rrcalg, kenbstar) then
+            (*Event to log termination of the protocol.*)
+            event terminateSend(PSR);
+            let sigma5:bitstring = sign((PSR), signk) in 
+            out(pubch, sigma5); (*msg 17*)
+
+        (*Handover Complete*)
+        in(pubch, sigma6:bitstring); (*msg26*)
+        let (nh_2:key, mmePSR:bitstring)  = verify(sigma6, pubkMME) in 
+0).
 
 (*
     Construction of the Mobile Management Entity.
@@ -373,6 +375,7 @@ process
 
     (*Setting up of the UE's IMSI*)
     new ueIMSI: imsi;
+    new ueSUPI: supi;
 
     (*
         Key that would have been generated by the AKA protocol when it first 
@@ -411,7 +414,7 @@ process
     
     (*Sets up the process running with their given values.*)
     (
-        (UE(ueIMSI ,uecaps, kenb, cellidSource, skUE, pkSE) ) |
+        (UE(ueSUPI, ueIMSI, uecaps, kenb, cellidSource, skUE, pkSE) ) |
         (SeNodeB(uecaps, kenb, cellidSource, skSE, pkTE, pkUE)) |
         (TeNodeB(cellidTarget, kenb, skTE, pkSE, pkMME, pkUE)) | 
         (MME(nh_2, kenb, skMME, pkTE)) 

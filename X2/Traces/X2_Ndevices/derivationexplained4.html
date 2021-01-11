@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: derivation for query 4</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Explained derivation</H1>
+Abbreviations:
+<ul>
+
+<li><span class="var">cellidSource_57307</span> <span class="conn">=</span> <span class="name">cellidSource</span>[!2 = <span class="var">@sid_57293</span>,!1 = <span class="var">@sid_57294</span>]
+</ul>
+
+<ol>
+
+<li><a name=step1>We assume as hypothesis that<br>
+<span class="pred">attacker</span>(<span class="var">PCI_57286</span>).<br>
+
+<li><a name=step2>We assume as hypothesis that<br>
+<span class="pred">attacker</span>(<span class="var">radioSignal_57287</span>).<br>
+
+<li><a name=step3>By <a href="#step2">2</a>, the attacker may know <span class="var">radioSignal_57287</span>.<br>
+By <a href="#step1">1</a>, the attacker may know <span class="var">PCI_57286</span>.<br>
+Using the function <span class="fun">2-tuple</span> the attacker may obtain <span class="fun"></span>(<span class="var">radioSignal_57287</span>,<span class="var">PCI_57286</span>).<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_57287</span>,<span class="var">PCI_57286</span>)).<br>
+
+<li><a name=step4>The message <span class="fun"></span>(<span class="var">radioSignal_57287</span>,<span class="var">PCI_57286</span>) that the attacker may have by <a href="#step3">3</a> may be received at input <a href="process_0.html#occ37" target="process" class="occ">{37}</a>.<br>
+The event <span class="fun">kenbstarSE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="name">ue1KeyAKA</span>[]))) (with environment <span class="var">PCI_34</span> = <span class="var">PCI_57286</span>, <span class="var">radioSignal_33</span> = <span class="var">radioSignal_57287</span>, <span class="var">@sid_252</span> = <span class="var">@sid_57288</span>, <span class="var">@sid_245</span> = <span class="var">@sid_57289</span>, <span class="var">@sid_234</span> = <span class="var">@sid_57290</span>, <span class="var">@sid_223</span> = <span class="var">@sid_57291</span>, <span class="var">@sid_222</span> = <span class="var">@sid_57292</span>, <span class="var">@sid_221</span> = <span class="var">@sid_57293</span>, <span class="var">@sid</span> = <span class="var">@sid_57294</span>, <span class="var">@occ40</span> = <span class="fun">@occ_cst</span>) may be executed at <a href="process_0.html#occ40" target="process" class="occ">{40}</a>.<br>
+So the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ42" target="process" class="occ">{42}</a>.<br>
+<span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[])).<br>
+
+<li><a name=step5>The message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) that the attacker may have by <a href="#step4">4</a> may be received at input <a href="process_0.html#occ56" target="process" class="occ">{56}</a>.<br>
+So event <span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="name">ue1KeyAKA</span>[]))) may be executed at <a href="process_0.html#occ58" target="process" class="occ">{58}</a> in session <span class="var">endsid_57305</span>.<br>
+<span class="pred">end</span>(<span class="var">endsid_57305</span>,<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_57307</span>,<span class="name">ue1KeyAKA</span>[])))).<br>
+
+</ol>
+</body>
+</html>

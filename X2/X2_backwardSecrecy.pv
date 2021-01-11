@@ -71,8 +71,8 @@ pred mem(alg , caps).
 clauses 
     (*The first clause states that mem(X,N) where n is the concatation of x and y*)
     forall x : alg, y: caps; mem( x , consset(x, y));
-    (* The second clause states that mem(X,N) holds if N = consset(X′,N′)
-     and mem(X,N′) holds, that is, if X is in the tail of N.*)
+    (* The second clause states that mem(X,N) holds if N = consset(Xâ€²,Nâ€²)
+     and mem(X,Nâ€²) holds, that is, if X is in the tail of N.*)
     forall x : alg, y: caps, z: alg; mem(x, y) -> mem(x, consset(z, y)).
 
 (*KDF Function takes in a bitstring and key to produce another key. Used for Key generation*)
@@ -242,45 +242,43 @@ let TeNodeB(cellid: bitstring, kenb: key, signk:sskey, pubkSN:spkey, pubkMME:spk
     in(pubch, sigma3:bitstring);
 
     let (sourceKenbStar:key, =hndCMDACK)  = verify(sigma3, pubkSN) in 
-
-    if sourceKenbStar = kenbstar then
-        out(pubch, okHandover);
     
     if not(sourceKenbStar = kenbstar) then 
-        out(pubch, failMsg);
+        out(pubch, failMsg)
+    else (
 
-    
-    in(pubch,sigma4:bitstring);
+        out(pubch, okHandover);
 
-    let (snTransfer:bitstring)  = verify(sigma4, pubkSN) in 
+        in(pubch,sigma4:bitstring);
 
-    event startTransfer(snTransfer);
+        let (snTransfer:bitstring)  = verify(sigma4, pubkSN) in 
 
-    (*Looks on the public channel for the Handover Complete message*)
-    in(pubch, data: bitstring); (*msg 12/13/14*)
+        event startTransfer(snTransfer);
 
-    (*Decrypts the data to construct rrcmac*)
-    let rrcmac:bitstring = sdec(rrcalg, data, kenbstar) in
+        (*Looks on the public channel for the Handover Complete message*)
+        in(pubch, data: bitstring); (*msg 12/13/14*)
 
-    event endTransferTE(rrcmac);
-    
-    (*Check if the mac from the expect key is the right mac*)
-    if rrcmac = mac(rrcalg, kenbstar) then
-        (*Event to log termination of the protocol.*)
-        event terminateSend(PSR);
-        let sigma5:bitstring = sign((PSR), signk) in 
-        out(pubch, sigma5); (*msg 17*)
+        (*Decrypts the data to construct rrcmac*)
+        let rrcmac:bitstring = sdec(rrcalg, data, kenbstar) in
 
-    (*Handover Complete*)
-    in(pubch, sigma6:bitstring); (*msg26*)
-    let (nh_2:key, =PSR)  = verify(sigma6, pubkMME) in 
+        event endTransferTE(rrcmac);
+        
+        (*Check if the mac from the expect key is the right mac*)
+        if rrcmac = mac(rrcalg, kenbstar) then
+            (*Event to log termination of the protocol.*)
+            event terminateSend(PSR);
+            let sigma5:bitstring = sign((PSR), signk) in 
+            out(pubch, sigma5); (*msg 17*)
 
-0.
+        (*Handover Complete*)
+        in(pubch, sigma6:bitstring); (*msg26*)
+        let (nh_2:key, mmePSR:bitstring)  = verify(sigma6, pubkMME) in 
+    0).
 
 (*
     Construction of the Mobile Management Entity.
     This function Takes in the following properties:
-    nh_2 = Is derived from the KASME is to be used as a basis for the K∗eNB calculation in the next handover event 
+    nh_2 = Is derived from the KASME is to be used as a basis for the Kâˆ—eNB calculation in the next handover event 
 *)
 let MME(nh_2: key, kenb : key, signk:sskey, pubkTE:spkey) =
 
@@ -351,7 +349,7 @@ process
 
         phase 1;   
 
-        out(pubch,(cellidSource,cellidTarget,kenb)) |
+        out(pubch,(cellidSource,cellidTarget,keyAKA)) |
 
         (UE(uecaps, kenb, cellidSource) ) |
         (SeNodeB(uecaps, kenb, cellidSource, skSE, pkTE)) |

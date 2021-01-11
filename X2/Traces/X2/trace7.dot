@@ -1,0 +1,93 @@
+digraph {
+graph [ordering = out]
+edge [arrowhead = none, penwidth = 1.6, fontsize = 30]
+node [shape = point, width = 0, height = 0, fontsize = 30]
+Trace<br/>
+[label = <A trace has been found.<br/>
+>, shape = plaintext]
+P0__0 [label = "Honest Process", shape = plaintext]
+P__0 [label = "Attacker", shape = plaintext]
+Trace -> P0__0 [label = "", style = invisible, weight = 100]{rank = same; P0__0 P__0}
+P0__0 -> P0__1 [label = <>, weight = 100]
+P0__1 -> P0__2 [label = <>, weight = 100]
+P0__2 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{1}</FONT><FONT COLOR="blue">new </FONT>a1_8555</TD></TR><TR><TD><FONT COLOR="darkgreen">{2}</FONT><FONT COLOR="blue">new </FONT>a2_8556</TD></TR><TR><TD><FONT COLOR="darkgreen">{3}</FONT><FONT COLOR="blue">new </FONT>keyAKA_8554</TD></TR><TR><TD><FONT COLOR="darkgreen">{4}</FONT><FONT COLOR="blue">new </FONT>skSE_8571</TD></TR><TR><TD><FONT COLOR="darkgreen">{5}</FONT><FONT COLOR="blue">new </FONT>skTE_8572</TD></TR><TR><TD><FONT COLOR="darkgreen">{6}</FONT><FONT COLOR="blue">new </FONT>skMME_8573</TD></TR><TR><TD><FONT COLOR="darkgreen">{10}</FONT><FONT COLOR="blue">new </FONT>cellidSource_8553</TD></TR><TR><TD><FONT COLOR="darkgreen">{11}</FONT><FONT COLOR="blue">new </FONT>cellidTarget_8557</TD></TR></TABLE>>]
+P0__2 -> P0__3 [label = <>, weight = 100]
+P0__3 -> P0__4 [label = <>, weight = 100]
+P__0 -> P__1 [label = <>, weight = 100]
+{rank = same; P__1 P0__4}
+P0__4 -> P0__5 [label = <>, weight = 100]
+P__1 -> P__2 [label = <>, weight = 100]
+{rank = same; P__2 P0__5}
+P0__5 -> P__2 [label = <(consset(~M_8713,consset(~M_8715,~M_8716)),~M_8711,<br/>
+~M_8712)>, arrowhead = normal]
+P0__5 -> P0__6 [label = <>, weight = 100]
+P__2 -> P__3 [label = <>, weight = 100]
+{rank = same; P__3 P0__6}
+/*RPar */
+P0__6 -> P0_3__6 [label = <>]
+P0__6 -> P0_2__6 [label = <>]
+P0__6 -> P0_1__6 [label = <>]
+P0__6 -> P0_0__6 [label = <>]
+P0__6 [label = "", fixedsize = false, width = 0, height = 0, shape = none]
+{rank = same; P0_0__6 P0_1__6 P0_2__6 P0_3__6}
+P0_0__6 -> P0_0__7 [label = <>, weight = 100]
+P0_0__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">MME</FONT>(kdf(kdf(kdf(cellidSource_8553,<br/>
+keyAKA_8554),keyAKA_8554),keyAKA_8554), kdf(cellidSource_8553,<br/>
+keyAKA_8554), skMME_8573, spk(skTE_8572))</TD></TR></TABLE>>]
+P0_0__7 -> P0_0__8 [label = <>, weight = 100]
+P0_1__6 -> P0_1__7 [label = <>, weight = 100]
+P0_1__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">TeNodeB</FONT>(cellidTarget_8557,<br/>
+kdf(cellidSource_8553,keyAKA_8554), skTE_8572,<br/>
+spk(skSE_8571), spk(skMME_8573))</TD></TR></TABLE>>]
+P0_1__7 -> P0_1__8 [label = <>, weight = 100]
+P0_2__6 -> P0_2__7 [label = <>, weight = 100]
+P0_2__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">SeNodeB</FONT>(consset(a1_8555,consset(<br/>
+a2_8556,emptyset)), kdf(cellidSource_8553,keyAKA_8554),<br/>
+cellidSource_8553, skSE_8571, spk(skTE_8572))</TD></TR></TABLE>>]
+P0_2__7 -> P0_2__8 [label = <>, weight = 100]
+P0_3__6 -> P0_3__7 [label = <>, weight = 100]
+P0_3__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">UE</FONT>(consset(a1_8555,consset(<br/>
+a2_8556,emptyset)), kdf(cellidSource_8553,keyAKA_8554),<br/>
+cellidSource_8553)</TD></TR><TR><TD><FONT COLOR="darkgreen">{17}</FONT><FONT COLOR="blue">new </FONT>radioSignal_8807</TD></TR><TR><TD><FONT COLOR="darkgreen">{18}</FONT><FONT COLOR="blue">new </FONT>PCI_8808</TD></TR><TR><TD><FONT COLOR="darkgreen">{19}</FONT><FONT COLOR="blue">event</FONT> UESendsMeasurementReport(radioSignal_8807,<br/>
+PCI_8808)</TD></TR></TABLE>>]
+P0_3__7 -> P0_3__8 [label = <>, weight = 100]
+P0_3__8 -> P0_3__9 [label = <>, weight = 100]
+P0_2__8 -> P0_2__9 [label = <>, weight = 100]
+P0_1__8 -> P0_1__9 [label = <>, weight = 100]
+P0_0__8 -> P0_0__9 [label = <>, weight = 100]
+P__3 -> P__4 [label = <>, weight = 100]
+{rank = same; P__4 P0_0__9 P0_1__9 P0_2__9 P0_3__9}
+P0_3__9 -> P0_3__10 [label = <>, weight = 100]
+P__4 -> P__5 [label = <>, weight = 100]
+{rank = same; P__5 P0_3__10}
+P0_3__10 -> P__5 [label = <(~M_8811,~M_8812) = (radioSignal_8807,PCI_8808)>, arrowhead = normal]
+P0_3__10 -> P0_3__11 [label = <>, weight = 100]
+P0_2__9 -> P0_2__10 [label = <>, weight = 100]
+P0_1__9 -> P0_1__10 [label = <>, weight = 100]
+P0_0__9 -> P0_0__10 [label = <>, weight = 100]
+P__5 -> P__6 [label = <>, weight = 100]
+{rank = same; P__6 P0_0__10 P0_1__10 P0_2__10 P0_3__11}
+P0_3__11 -> P0_3__12 [label = <>, weight = 100]
+P0_2__10 -> P0_2__11 [label = <>, weight = 100]
+P0_1__10 -> P0_1__11 [label = <>, weight = 100]
+P0_0__10 -> P0_0__11 [label = <>, weight = 100]
+P__6 -> P__7 [label = <>, weight = 100]
+{rank = same; P__7 P0_0__11 P0_1__11 P0_2__11 P0_3__12}
+P0_3__12 -> P0_3__13 [label = <>, weight = 100]
+P__7 -> P__8 [label = <>, weight = 100]
+{rank = same; P__8 P0_3__13}
+P0_3__13 -> P__8 [label = <~M_8713 = a1_8555>, dir = back, arrowhead = normal]
+P0_3__13 -> P0_3__14 [label = <>, weight = 100]
+P0_2__11 -> P0_2__12 [label = <>, weight = 100]
+P0_1__11 -> P0_1__12 [label = <>, weight = 100]
+P0_0__11 -> P0_0__12 [label = <>, weight = 100]
+P__8 -> P__9 [label = <>, weight = 100]
+{rank = same; P__9 P0_0__12 P0_1__12 P0_2__12 P0_3__14}
+P0_3__14 -> P0_3__15 [label = <>, weight = 100]
+P0_3__15 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{22}</FONT><FONT COLOR="blue">event</FONT> UEReceivesHOComand(a1_8555)</TD></TR></TABLE>>]
+P0_3__15 -> P0_3__16 [label = <>, weight = 100]
+P0_3__16 -> P0_3__17 [label = <>, weight = 100]
+P0_3__17 [color = red, shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{25}</FONT><FONT COLOR="blue">event</FONT> kenbstarUE(kdf(cellidSource_8553,kdf(<br/>
+cellidSource_8553,keyAKA_8554)))</TD></TR></TABLE>>]
+P0_3__17 -> P0_3__18 [label = <>, weight = 100]
+Abbrev [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"><TR> <TD> Abbreviations </TD></TR><TR><TD>~M_8713 = a1_8555</TD></TR><TR><TD>~M_8715 = a2_8556</TD></TR><TR><TD>~M_8716 = emptyset</TD></TR><TR><TD>~M_8711 = cellidSource_8553</TD></TR><TR><TD>~M_8712 = cellidTarget_8557</TD></TR></TABLE>>]Abbrev -> P__0 [style = invisible, weight =100]}

@@ -120,11 +120,18 @@ event endTransferTE2(bitstring,key).
 event UESentMeasurementReport(bitstring,bitstring).
 event UESentMeasurementReport2(bitstring,bitstring,key).  
 
-
-
 (*--Query 8--*)
 query k:key;
     (inj-event(kenbstarUE(k)) ==> inj-event(kenbstarTE(k))).
+
+query k1:key, k2:key;
+  (event(kenbstarUE(k1)) &&  event(kenbstarTE(k2)) ==> (k1=k2)).
+
+
+query k1:key, k2:key;
+  (inj-event(kenbstarUE(k1)) &&  inj-event(kenbstarTE(k2)) ==> (k1=k2)).
+
+
 
 (*--Query 9--*)
 query k:key;
@@ -267,43 +274,37 @@ let TeNodeB(cellid: bitstring, kenb: key, signk:sskey, pubkSN:spkey, pubkMME:spk
 
     let (sourceKenbStar:key, =hndCMDACK)  = verify(sigma3, pubkSN) in 
 
-    if sourceKenbStar = kenbstar then
-        out(pubch, okHandover);
-    
     if not(sourceKenbStar = kenbstar) then 
-        out(pubch, failMsg);
+        out(pubch, failMsg)
+    else (
 
-    
-    in(pubch,sigma4:bitstring);
+        out(pubch, okHandover);
 
-    let (snTransfer:bitstring)  = verify(sigma4, pubkSN) in 
+        in(pubch,sigma4:bitstring);
 
-    event startTransfer(snTransfer);
+        let (snTransfer:bitstring)  = verify(sigma4, pubkSN) in 
 
-    (*Looks on the public channel for the Handover Complete message*)
-    in(pubch, data: bitstring); (*msg 12/13/14*)
-    
-    event endTransferTE(data)[kenbstar]; 
-    event endTransferTE2(cellid,kenb);
-   
-    (*Decrypts the data to construct rrcmac*)
-    let rrcmac:bitstring = sdec(rrcalg, data, kenbstar) in
-       
-    
-    event receivedTN(kenbstar);
-    
-    (*Check if the mac from the expect key is the right mac*)
-    if rrcmac = mac(rrcalg, kenbstar) then
-        (*Event to log termination of the protocol.*)
-        event terminateSend(PSR);
-        let sigma5:bitstring = sign((PSR), signk) in 
-        out(pubch, sigma5); (*msg 17*)
+        event startTransfer(snTransfer);
 
-    (*Handover Complete*)
-    in(pubch, sigma6:bitstring); (*msg26*)
-    let (nh_2:key, =PSR)  = verify(sigma6, pubkMME) in 
+        (*Looks on the public channel for the Handover Complete message*)
+        in(pubch, data: bitstring); (*msg 12/13/14*)
 
-0.
+        (*Decrypts the data to construct rrcmac*)
+        let rrcmac:bitstring = sdec(rrcalg, data, kenbstar) in
+
+        event endTransferTE(rrcmac);
+        
+        (*Check if the mac from the expect key is the right mac*)
+        if rrcmac = mac(rrcalg, kenbstar) then
+            (*Event to log termination of the protocol.*)
+            event terminateSend(PSR);
+            let sigma5:bitstring = sign((PSR), signk) in 
+            out(pubch, sigma5); (*msg 17*)
+
+        (*Handover Complete*)
+        in(pubch, sigma6:bitstring); (*msg26*)
+        let (nh_2:key, mmePSR:bitstring)  = verify(sigma6, pubkMME) in 
+    0).
 
 (*
 	Construction of the Mobile Management Entity.
@@ -359,7 +360,7 @@ process
     
     (*Sets up the process running with their given values.*)
     (
-        !  new skTE:sskey; 
+        !new skTE:sskey; 
         !new cellidSource:bitstring; 
         !new cellidTarget:bitstring; 
         !let kenbUE1 : key = kdf(cellidSource, ue1KeyAKA) in    

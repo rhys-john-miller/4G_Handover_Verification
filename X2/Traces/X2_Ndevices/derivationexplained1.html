@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: derivation for query 1</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Explained derivation</H1>
+Abbreviations:
+<ul>
+
+<li><span class="var">cellidSource_45659</span> <span class="conn">=</span> <span class="name">cellidSource</span>[!2 = <span class="var">@sid_45650</span>,!1 = <span class="var">@sid_45651</span>]
+<li><span class="var">cellidSource_45660</span> <span class="conn">=</span> <span class="name">cellidSource</span>[!2 = <span class="var">@sid_45633</span>,!1 = <span class="var">@sid_45634</span>]
+</ul>
+
+<ol>
+
+<li><a name=step1>The attacker has some term <span class="var">PCI_45632</span>.<br>
+<span class="pred">attacker</span>(<span class="var">PCI_45632</span>).<br>
+
+<li><a name=step2>The attacker has some term <span class="var">radioSignal_45631</span>.<br>
+<span class="pred">attacker</span>(<span class="var">radioSignal_45631</span>).<br>
+
+<li><a name=step3>By <a href="#step2">2</a>, the attacker may know <span class="var">radioSignal_45631</span>.<br>
+By <a href="#step1">1</a>, the attacker may know <span class="var">PCI_45632</span>.<br>
+Using the function <span class="fun">2-tuple</span> the attacker may obtain <span class="fun"></span>(<span class="var">radioSignal_45631</span>,<span class="var">PCI_45632</span>).<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_45631</span>,<span class="var">PCI_45632</span>)).<br>
+
+<li><a name=step4>The message <span class="fun"></span>(<span class="var">radioSignal_45631</span>,<span class="var">PCI_45632</span>) that the attacker may have by <a href="#step3">3</a> may be received at input <a href="process_0.html#occ37" target="process" class="occ">{37}</a>.<br>
+So the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ42" target="process" class="occ">{42}</a>.<br>
+<span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[])).<br>
+
+<li><a name=step5>By <a href="#step4">4</a>, the attacker may know <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]).<br>
+Using the function <span class="fun">getmsg</span> the attacker may obtain <span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)))).<br>
+
+<li><a name=step6>By <a href="#step5">5</a>, the attacker may know <span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45660</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+Using the function <span class="fun">2-proj-2-tuple</span> the attacker may obtain <span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)).<br>
+<span class="pred">attacker</span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+
+<li><a name=step7>By <a href="#step6">6</a>, the attacker may know <span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)).<br>
+Using the function <span class="fun">1-proj-consset</span> the attacker may obtain <span class="name">a1</span>[].<br>
+<span class="pred">attacker</span>(<span class="name">a1</span>[]).<br>
+
+<li><a name=step8>Using a clause given in the input file,<br>
+<span class="pred">mem</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+
+<li><a name=step9>The message <span class="name">a1</span>[] that the attacker may have by <a href="#step7">7</a> may be received at input <a href="process_0.html#occ28" target="process" class="occ">{28}</a>.<br>
+By <a href="#step8">8</a>, <span class="pred">mem</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))) is true at <a href="process_0.html#occ31" target="process" class="occ">{31}</a>.<br>
+So event <span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45659</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45659</span>,<span class="name">ue1KeyAKA</span>[]))) may be executed at <a href="process_0.html#occ33" target="process" class="occ">{33}</a> in session <span class="var">endsid_45657</span>.<br>
+<span class="pred">end</span>(<span class="var">endsid_45657</span>,<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_45659</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_45659</span>,<span class="name">ue1KeyAKA</span>[])))).<br>
+
+</ol>
+</body>
+</html>

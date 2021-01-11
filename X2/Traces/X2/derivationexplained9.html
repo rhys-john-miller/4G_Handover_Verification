@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: derivation for query 9</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Explained derivation</H1>
+
+<ol>
+
+<li><a name=step1>The attacker has some term <span class="var">PCI_11039</span>.<br>
+<span class="pred">attacker</span>(<span class="var">PCI_11039</span>).<br>
+
+<li><a name=step2>The attacker has some term <span class="var">radioSignal_11038</span>.<br>
+<span class="pred">attacker</span>(<span class="var">radioSignal_11038</span>).<br>
+
+<li><a name=step3>By <a href="#step2">2</a>, the attacker may know <span class="var">radioSignal_11038</span>.<br>
+By <a href="#step1">1</a>, the attacker may know <span class="var">PCI_11039</span>.<br>
+Using the function <span class="fun">2-tuple</span> the attacker may obtain <span class="fun"></span>(<span class="var">radioSignal_11038</span>,<span class="var">PCI_11039</span>).<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_11038</span>,<span class="var">PCI_11039</span>)).<br>
+
+<li><a name=step4>The message <span class="fun"></span>(<span class="var">radioSignal_11038</span>,<span class="var">PCI_11039</span>) that the attacker may have by <a href="#step3">3</a> may be received at input <a href="process_0.html#occ29" target="process" class="occ">{29}</a>.<br>
+The event <span class="fun">kenbstarSE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))) may be executed at <a href="process_0.html#occ32" target="process" class="occ">{32}</a>.<br>
+So the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ34" target="process" class="occ">{34}</a>.<br>
+<span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[])).<br>
+
+<li><a name=step5>The message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) that the attacker may have by <a href="#step4">4</a> may be received at input <a href="process_0.html#occ46" target="process" class="occ">{46}</a>.<br>
+So event <span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))) may be executed at <a href="process_0.html#occ49" target="process" class="occ">{49}</a>.<br>
+<span class="pred">end</span>(<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))).<br>
+
+</ol>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: derivation for query 6</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Explained derivation</H1>
+
+<ol>
+
+<li><a name=step1>The attacker has some term <span class="var">PCI_7333</span>.<br>
+<span class="pred">attacker</span>(<span class="var">PCI_7333</span>).<br>
+
+<li><a name=step2>The attacker has some term <span class="var">radioSignal_7332</span>.<br>
+<span class="pred">attacker</span>(<span class="var">radioSignal_7332</span>).<br>
+
+<li><a name=step3>By <a href="#step2">2</a>, the attacker may know <span class="var">radioSignal_7332</span>.<br>
+By <a href="#step1">1</a>, the attacker may know <span class="var">PCI_7333</span>.<br>
+Using the function <span class="fun">2-tuple</span> the attacker may obtain <span class="fun"></span>(<span class="var">radioSignal_7332</span>,<span class="var">PCI_7333</span>).<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_7332</span>,<span class="var">PCI_7333</span>)).<br>
+
+<li><a name=step4>The message <span class="fun"></span>(<span class="var">radioSignal_7332</span>,<span class="var">PCI_7333</span>) that the attacker may have by <a href="#step3">3</a> may be received at input <a href="process_0.html#occ29" target="process" class="occ">{29}</a>.<br>
+So the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ34" target="process" class="occ">{34}</a>.<br>
+<span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[])).<br>
+
+<li><a name=step5>The message <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) that the attacker may have by <a href="#step4">4</a> may be received at input <a href="process_0.html#occ46" target="process" class="occ">{46}</a>.<br>
+So event <span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))) may be executed at <a href="process_0.html#occ49" target="process" class="occ">{49}</a>.<br>
+<span class="pred">end</span>(<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))).<br>
+
+<li><a name=step6>The message <span class="fun"></span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)),<span class="name">cellidSource</span>[],<span class="name">cellidTarget</span>[]) may be sent to the attacker at output <a href="process_0.html#occ13" target="process" class="occ">{13}</a>.<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)),<span class="name">cellidSource</span>[],<span class="name">cellidTarget</span>[])).<br>
+
+<li><a name=step7>By <a href="#step6">6</a>, the attacker may know <span class="fun"></span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)),<span class="name">cellidSource</span>[],<span class="name">cellidTarget</span>[]).<br>
+Using the function <span class="fun">1-proj-3-tuple</span> the attacker may obtain <span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)).<br>
+<span class="pred">attacker</span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+
+<li><a name=step8>By <a href="#step7">7</a>, the attacker may know <span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)).<br>
+Using the function <span class="fun">1-proj-consset</span> the attacker may obtain <span class="name">a1</span>[].<br>
+<span class="pred">attacker</span>(<span class="name">a1</span>[]).<br>
+
+<li><a name=step9>Using a clause given in the input file,<br>
+<span class="pred">mem</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+
+<li><a name=step10>The message <span class="name">a1</span>[] that the attacker may have by <a href="#step8">8</a> may be received at input <a href="process_0.html#occ21" target="process" class="occ">{21}</a>.<br>
+By <a href="#step9">9</a>, <span class="pred">mem</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))) is true at <a href="process_0.html#occ23" target="process" class="occ">{23}</a>.<br>
+So event <span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))) may be executed at <a href="process_0.html#occ25" target="process" class="occ">{25}</a>.<br>
+<span class="pred">end</span>(<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))).<br>
+
+<li><a name=step11>By <a href="#step10">10</a>, <span class="pred">end</span>(<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))).<br>
+By <a href="#step5">5</a>, <span class="pred">end</span>(<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))).<br>
+The goals are reached, combined in the following fact:<br>
+<span class="pred">combined_end_end</span>(<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))),<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))).<br>
+
+</ol>
+</body>
+</html>

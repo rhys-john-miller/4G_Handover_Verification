@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: derivation for query 3</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Derivation</H1>
+goal <span class="pred">combined_end_end</span>(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="name">a2</span>[]),<span class="fun">SNSendsHORequiredToTE</span>(<span class="name">cellidSource</span>[]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause41" target="clauses">clause 41</a> <span class="pred">end</span>(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="name">a2</span>[]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause28" target="clauses">clause 28</a> <span class="pred">attacker</span>(<span class="name">okHandover</span>[])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause44" target="clauses">clause 44</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a2</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause0" target="clauses">clause 0</a> <span class="pred">mem</span>(<span class="name">a2</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause1" target="clauses">clause 1</a> <span class="pred">mem</span>(<span class="name">a2</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause39" target="clauses">clause 39</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply <span class="fun">2-tuple</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_3374</span>,<span class="var">PCI_3375</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">radioSignal_3374</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">PCI_3375</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply <span class="fun">2-tuple</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_3382</span>,<span class="var">PCI_3383</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">radioSignal_3382</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">PCI_3383</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause38" target="clauses">clause 38</a> <span class="pred">end</span>(<span class="fun">SNSendsHORequiredToTE</span>(<span class="name">cellidSource</span>[]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply <span class="fun">2-tuple</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_3365</span>,<span class="var">PCI_3366</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">radioSignal_3365</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">PCI_3366</span>)<br>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: completed clauses for query 3</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Completed clauses</H1>
+
+<ul>
+
+<li><span class="pred">attacker</span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]))
+<li><span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]),<span class="name">keyAKA</span>[]),<span class="name">PSR</span>[]),<span class="name">skMME</span>[]))
+<li><span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="name">PSR</span>[],<span class="name">skTE</span>[]))
+<li><span class="pred">attacker</span>(<span class="var">radioSignal_3307</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">PCI_3308</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a2</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_3308</span>,radioSignal_35 = <span class="var">radioSignal_3307</span>])
+<li><span class="pred">end</span>(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="name">a2</span>[]))
+<li><span class="pred">attacker</span>(<span class="var">radioSignal_3287</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">PCI_3288</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a2</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_3288</span>,radioSignal_35 = <span class="var">radioSignal_3287</span>],<span class="name">skSE</span>[]))
+<li><span class="pred">attacker</span>(<span class="var">radioSignal_3280</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">PCI_3281</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a1</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_3281</span>,radioSignal_35 = <span class="var">radioSignal_3280</span>])
+<li><span class="pred">end</span>(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="name">a1</span>[]))
+<li><span class="pred">attacker</span>(<span class="var">radioSignal_3256</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">PCI_3257</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a1</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_3257</span>,radioSignal_35 = <span class="var">radioSignal_3256</span>],<span class="name">skSE</span>[]))
+<li><span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a2</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]))
+<li><span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="name">hndCMDACK</span>[]),<span class="name">skSE</span>[]))
+<li><span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a1</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]))
+<li><span class="pred">attacker</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))
+<li><span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]))
+<li><span class="pred">end</span>(<span class="fun">SNSendsHORequiredToTE</span>(<span class="name">cellidSource</span>[]))
+<li><span class="pred">begin</span>(<span class="fun">UESendsMeasurementReport</span>(<span class="name">radioSignal</span>[],<span class="name">PCI</span>[])) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="name">PCI</span>[])
+<li><span class="pred">begin</span>(<span class="fun">UESendsMeasurementReport</span>(<span class="name">radioSignal</span>[],<span class="name">PCI</span>[])) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="name">radioSignal</span>[])
+<li><span class="pred">attacker</span>(<span class="name">cellidTarget</span>[])
+<li><span class="pred">attacker</span>(<span class="name">cellidSource</span>[])
+<li><span class="pred">attacker</span>(<span class="name">a2</span>[])
+<li><span class="pred">attacker</span>(<span class="name">a1</span>[])
+<li><span class="pred">attacker</span>(<span class="name">new-name</span>[!att = <span class="var">v_2626</span>])
+<li><span class="pred">equal</span>(<span class="var">v_2625</span>,<span class="var">v_2625</span>)
+<li><span class="pred">attacker</span>(<span class="name">PSR</span>[])
+<li><span class="pred">attacker</span>(<span class="name">failMsg</span>[])
+<li><span class="pred">attacker</span>(<span class="name">hndCMD</span>[])
+<li><span class="pred">attacker</span>(<span class="name">hndCMDACK</span>[])
+<li><span class="pred">attacker</span>(<span class="name">okHandover</span>[])
+<li><span class="pred">attacker</span>(<span class="name">pubch</span>[])
+<li><span class="pred">attacker</span>(<span class="fun">fail-any</span>)
+<li><span class="pred">attacker</span>(<span class="var">v_2623</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2622</span>) <span class="conn">-&gt;</span> <span class="pred">mess</span>(<span class="var">v_2623</span>,<span class="var">v_2622</span>)
+<li><span class="pred">attacker</span>(<span class="var">v_2617</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_2617</span>))
+<li><span class="pred">attacker</span>(<span class="var">v_2608</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2609</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_2608</span>,<span class="var">v_2609</span>))
+<li><span class="pred">attacker</span>(<span class="var">v_2591</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2592</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2593</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">v_2591</span>,<span class="var">v_2592</span>,<span class="var">v_2593</span>))
+<li><span class="pred">attacker</span>(<span class="var">v_2576</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2577</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">consset</span>(<span class="var">v_2576</span>,<span class="var">v_2577</span>))
+<li><span class="pred">attacker</span>(<span class="fun">emptyset</span>)
+<li><span class="pred">attacker</span>(<span class="fun">false</span>)
+<li><span class="pred">attacker</span>(<span class="var">v_2569</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2570</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">kdf</span>(<span class="var">v_2569</span>,<span class="var">v_2570</span>))
+<li><span class="pred">attacker</span>(<span class="var">v_2565</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2566</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">mac</span>(<span class="var">v_2565</span>,<span class="var">v_2566</span>))
+<li><span class="pred">attacker</span>(<span class="var">v_2547</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2548</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2549</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">senc</span>(<span class="var">v_2547</span>,<span class="var">v_2548</span>,<span class="var">v_2549</span>))
+<li><span class="pred">attacker</span>(<span class="var">v_2542</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">v_2543</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="var">v_2542</span>,<span class="var">v_2543</span>))
+<li><span class="pred">attacker</span>(<span class="var">v_2539</span>) <span class="conn">-&gt;</span> <span class="pred">attacker</span>(<span class="fun">spk</span>(<span class="var">v_2539</span>))
+<li><span class="pred">attacker</span>(<span class="fun">true</span>)
+<li><span class="pred">mem</span>(<span class="var">x_2524</span>,<span class="fun">consset</span>(<span class="var">x_2524</span>,<span class="var">y_2525</span>))
+<li><span class="pred">mem</span>(<span class="var">x_2509</span>,<span class="var">y_2511</span>) <span class="conn">-&gt;</span> <span class="pred">mem</span>(<span class="var">x_2509</span>,<span class="fun">consset</span>(<span class="var">z_2510</span>,<span class="var">y_2511</span>))
+</ul>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: trace for query 4</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Trace</H1>
+<span class="keyword">new</span> <span class="name">a1</span>: <span class="type">alg</span> creating <span class="name">a1_57327</span> at <a href="process_0.html#occ1" target="process" class="occ">{1}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">a2</span>: <span class="type">alg</span> creating <span class="name">a2_57328</span> at <a href="process_0.html#occ2" target="process" class="occ">{2}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">ue1KeyAKA</span>: <span class="type">key</span> creating <span class="name">ue1KeyAKA_57326</span> at <a href="process_0.html#occ3" target="process" class="occ">{3}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">ue2KeyAKA</span>: <span class="type">key</span> creating <span class="name">ue2KeyAKA_57330</span> at <a href="process_0.html#occ4" target="process" class="occ">{4}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">skSE</span>: <span class="type">sskey</span> creating <span class="name">skSE_57329</span> at <a href="process_0.html#occ5" target="process" class="occ">{5}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">skMME</span>: <span class="type">sskey</span> creating <span class="name">skMME_57331</span> at <a href="process_0.html#occ6" target="process" class="occ">{6}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">skTE</span>: <span class="type">sskey</span> creating <span class="name">skTE_57466</span> at <a href="process_0.html#occ10" target="process" class="occ">{10}</a> in copy <span class="name">a_57324</span><br>
+<br>
+<span class="keyword">new</span> <span class="name">cellidSource</span>: <span class="type">bitstring</span> creating <span class="name">cellidSource_57501</span> at <a href="process_0.html#occ12" target="process" class="occ">{12}</a> in copy <span class="name">a_57324</span>, <span class="name">a_57323</span><br>
+<br>
+<span class="keyword">new</span> <span class="name">cellidTarget</span>: <span class="type">bitstring</span> creating <span class="name">cellidTarget_57536</span> at <a href="process_0.html#occ14" target="process" class="occ">{14}</a> in copy <span class="name">a_57324</span>, <span class="name">a_57323</span>, <span class="name">a_57322</span><br>
+<br>
+<span class="keyword">event</span> <span class="fun">TNReceivesHORequestFromSE</span>(<span class="name">cellidTarget_57536</span>) at <a href="process_0.html#occ55" target="process" class="occ">{55}</a> in copy <span class="name">a_57324</span>, <span class="name">a_57323</span>, <span class="name">a_57322</span>, <span class="name">a_57321</span>, <span class="name">a_57320</span>, <span class="name">a_57319</span>, <span class="name">a_57318</span>, <span class="name">a_57308</span><br>
+<br>
+<span class="keyword">new</span> <span class="name">skTE</span>: <span class="type">sskey</span> creating <span class="name">skTE_57806</span> at <a href="process_0.html#occ10" target="process" class="occ">{10}</a> in copy <span class="name">a_57310</span><br>
+<br>
+<span class="keyword">new</span> <span class="name">cellidSource</span>: <span class="type">bitstring</span> creating <span class="name">cellidSource_57325</span> at <a href="process_0.html#occ12" target="process" class="occ">{12}</a> in copy <span class="name">a_57310</span>, <span class="name">a_57309</span><br>
+<br>
+<span class="keyword">new</span> <span class="name">cellidTarget</span>: <span class="type">bitstring</span> creating <span class="name">cellidTarget_57875</span> at <a href="process_0.html#occ14" target="process" class="occ">{14}</a> in copy <span class="name">a_57310</span>, <span class="name">a_57309</span>, <span class="name">a_57317</span><br>
+<br>
+<span class="keyword">in</span>(<span class="name">pubch</span>, <span class="fun"></span>(<span class="name">a_57312</span>,<span class="name">a_57311</span>)) at <a href="process_0.html#occ37" target="process" class="occ">{37}</a> in copy <span class="name">a_57310</span>, <span class="name">a_57309</span>, <span class="name">a_57317</span>, <span class="name">a_57316</span>, <span class="name">a_57315</span>, <span class="name">a_57314</span>, <span class="name">a_57313</span><br>
+<br>
+<span class="keyword">event</span> <span class="fun">SNSendsHORequiredToTE</span>(<span class="name">cellidSource_57325</span>) at <a href="process_0.html#occ38" target="process" class="occ">{38}</a> in copy <span class="name">a_57310</span>, <span class="name">a_57309</span>, <span class="name">a_57317</span>, <span class="name">a_57316</span>, <span class="name">a_57315</span>, <span class="name">a_57314</span>, <span class="name">a_57313</span><br>
+<br>
+<span class="keyword">event</span> <span class="fun">kenbstarSE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="name">ue1KeyAKA_57326</span>))) at <a href="process_0.html#occ40" target="process" class="occ">{40}</a> in copy <span class="name">a_57310</span>, <span class="name">a_57309</span>, <span class="name">a_57317</span>, <span class="name">a_57316</span>, <span class="name">a_57315</span>, <span class="name">a_57314</span>, <span class="name">a_57313</span><br>
+<br>
+<span class="keyword">out</span>(<span class="name">pubch</span>, <span class="var">~M_58153</span>) with <span class="var">~M_58153</span> = <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="name">ue1KeyAKA_57326</span>)),<span class="fun">consset</span>(<span class="name">a1_57327</span>,<span class="fun">consset</span>(<span class="name">a2_57328</span>,<span class="fun">emptyset</span>))),<span class="name">skSE_57329</span>) at <a href="process_0.html#occ42" target="process" class="occ">{42}</a> in copy <span class="name">a_57310</span>, <span class="name">a_57309</span>, <span class="name">a_57317</span>, <span class="name">a_57316</span>, <span class="name">a_57315</span>, <span class="name">a_57314</span>, <span class="name">a_57313</span><br>
+<br>
+<span class="keyword">in</span>(<span class="name">pubch</span>, <span class="var">~M_58153</span>) with <span class="var">~M_58153</span> = <span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="name">ue1KeyAKA_57326</span>)),<span class="fun">consset</span>(<span class="name">a1_57327</span>,<span class="fun">consset</span>(<span class="name">a2_57328</span>,<span class="fun">emptyset</span>))),<span class="name">skSE_57329</span>) at <a href="process_0.html#occ56" target="process" class="occ">{56}</a> in copy <span class="name">a_57324</span>, <span class="name">a_57323</span>, <span class="name">a_57322</span>, <span class="name">a_57321</span>, <span class="name">a_57320</span>, <span class="name">a_57319</span>, <span class="name">a_57318</span>, <span class="name">a_57308</span><br>
+<br>
+<span class="keyword">event</span> <span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="name">ue1KeyAKA_57326</span>))) at <a href="process_0.html#occ58" target="process" class="occ">{58}</a> in copy <span class="name">a_57324</span>, <span class="name">a_57323</span>, <span class="name">a_57322</span>, <span class="name">a_57321</span>, <span class="name">a_57320</span>, <span class="name">a_57319</span>, <span class="name">a_57318</span>, <span class="name">a_57308</span> (goal)<br>
+<br>
+The event <span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="fun">kdf</span>(<span class="name">cellidSource_57325</span>,<span class="name">ue1KeyAKA_57326</span>))) is executed in session <span class="name">a_57308</span>.<br>
+A trace has been found.<br>
+</body>
+</html>

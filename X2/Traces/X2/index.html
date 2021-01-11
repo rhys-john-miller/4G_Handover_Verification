@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: main result page</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>ProVerif results</H1>
+<A HREF="process_0.html" TARGET="process">Process</A><br>
+<UL>
+<LI><span class="query">Query event(<span class="fun">TNReceivesHORequestFromSE</span>(<span class="var">b</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">b1</span>,<span class="var">b2</span>))</span><br>
+<A HREF="clauses1.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses1.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">end</span>(<span class="fun">TNReceivesHORequestFromSE</span>(<span class="name">cellidTarget</span>[]))<br>
+<A HREF="derivation1.html">Derivation</A> <A HREF="derivationexplained1.html">Explained derivation</A><br>
+<A HREF="unifyDeriv1.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace1.html">Trace</A><br>
+<A HREF="trace1.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">TNReceivesHORequestFromSE</span>(<span class="var">b</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">b1</span>,<span class="var">b2</span>)) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="var">a_51</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">b1_52</span>,<span class="var">b2_53</span>))</span><br>
+<A HREF="clauses2.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses2.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">end</span>(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="name">a2</span>[]))<br>
+<A HREF="derivation2.html">Derivation</A> <A HREF="derivationexplained2.html">Explained derivation</A><br>
+<A HREF="unifyDeriv2.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace2.html">Trace</A><br>
+<A HREF="trace2.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="var">a_51</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">b1_52</span>,<span class="var">b2_53</span>)) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="var">a_54</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">SNSendsHORequiredToTE</span>(<span class="var">b3</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">b1_55</span>,<span class="var">b2_56</span>))</span><br>
+<A HREF="clauses3.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses3.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">combined_end_end</span>(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="name">a2</span>[]),<span class="fun">SNSendsHORequiredToTE</span>(<span class="name">cellidSource</span>[]))<br>
+<A HREF="derivation3.html">Derivation</A> <A HREF="derivationexplained3.html">Explained derivation</A><br>
+<A HREF="unifyDeriv3.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace3.html">Trace</A><br>
+<A HREF="trace3.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">SNReceivesHOCommandFromTE</span>(<span class="var">a_54</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">SNSendsHORequiredToTE</span>(<span class="var">b3</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">b1_55</span>,<span class="var">b2_56</span>)) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">startTransfer</span>(<span class="var">b1_57</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">ba</span>,<span class="var">bb</span>))</span><br>
+<A HREF="clauses4.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses4.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">end</span>(<span class="fun">startTransfer</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)))))<br>
+<A HREF="derivation4.html">Derivation</A> <A HREF="derivationexplained4.html">Explained derivation</A><br>
+<A HREF="unifyDeriv4.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace4.html">Trace</A><br>
+<A HREF="trace4.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">startTransfer</span>(<span class="var">b1_57</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">ba</span>,<span class="var">bb</span>)) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">startTransfer</span>(<span class="var">b1_58</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">ba_59</span>,<span class="var">bb_60</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UEReceivesHOComand</span>(<span class="var">a_61</span>))</span><br>
+<A HREF="clauses5.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses5.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">combined_end_end</span>(<span class="fun">startTransfer</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)))),<span class="fun">UESendsMeasurementReport</span>(<span class="name">radioSignal</span>[],<span class="name">PCI</span>[]))<br>
+<A HREF="derivation5.html">Derivation</A> <A HREF="derivationexplained5.html">Explained derivation</A><br>
+<A HREF="unifyDeriv5.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace5.html">Trace</A><br>
+<A HREF="trace5.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">startTransfer</span>(<span class="var">b1_58</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">UESendsMeasurementReport</span>(<span class="var">ba_59</span>,<span class="var">bb_60</span>)) <span class="conn">==&gt;</span> event(<span class="fun">UEReceivesHOComand</span>(<span class="var">a_61</span>)) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query <span class="keyword">not </span>(event(<span class="fun">kenbstarUE</span>(<span class="var">k_62</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">kenbstarTE</span>(<span class="var">k_62</span>)))</span><br>
+<A HREF="clauses6.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses6.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">combined_end_end</span>(<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))),<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))))<br>
+<A HREF="derivation6.html">Derivation</A> <A HREF="derivationexplained6.html">Explained derivation</A><br>
+<A HREF="unifyDeriv6.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace6.html">Trace</A><br>
+<A HREF="trace6.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT <span class="keyword">not </span>(event(<span class="fun">kenbstarUE</span>(<span class="var">k_62</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">kenbstarTE</span>(<span class="var">k_62</span>))) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">kenbstarUE</span>(<span class="var">k1</span>)) <span class="conn">==&gt;</span> (event(<span class="fun">kenbstarTE</span>(<span class="var">k2</span>)) <span class="conn">&amp;&amp;</span> <span class="var">k1</span> <span class="conn">=</span> <span class="var">k2</span>)</span><br>
+<A HREF="clauses7.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses7.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">end</span>(<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))))<br>
+<A HREF="derivation7.html">Derivation</A> <A HREF="derivationexplained7.html">Explained derivation</A><br>
+<A HREF="unifyDeriv7.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace7.html">Trace</A><br>
+<A HREF="trace7.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">kenbstarUE</span>(<span class="var">k1</span>)) <span class="conn">==&gt;</span> (event(<span class="fun">kenbstarTE</span>(<span class="var">k2</span>)) <span class="conn">&amp;&amp;</span> <span class="var">k1</span> <span class="conn">=</span> <span class="var">k2</span>) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">kenbstarUE</span>(<span class="var">k_63</span>)) <span class="conn">==&gt;</span> event(<span class="fun">kenbstarSE</span>(<span class="var">k_63</span>))</span><br>
+<A HREF="clauses8.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses8.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">end</span>(<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))))<br>
+<A HREF="derivation8.html">Derivation</A> <A HREF="derivationexplained8.html">Explained derivation</A><br>
+<A HREF="unifyDeriv8.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace8.html">Trace</A><br>
+<A HREF="trace8.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">kenbstarUE</span>(<span class="var">k_63</span>)) <span class="conn">==&gt;</span> event(<span class="fun">kenbstarSE</span>(<span class="var">k_63</span>)) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">kenbstarTE</span>(<span class="var">k_64</span>)) <span class="conn">==&gt;</span> (event(<span class="fun">kenbstarSE</span>(<span class="var">k_64</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">kenbstarUE</span>(<span class="var">k_64</span>)))</span><br>
+<A HREF="clauses9.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses9.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">begin</span>(<span class="fun">kenbstarSE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])))) <span class="conn">-&gt;</span> <span class="pred">end</span>(<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[]))))<br>
+<A HREF="derivation9.html">Derivation</A> <A HREF="derivationexplained9.html">Explained derivation</A><br>
+<A HREF="unifyDeriv9.html" TARGET="unifderiv">Unify derivation</A><br>
+<A HREF="trace9.html">Trace</A><br>
+<A HREF="trace9.pdf">Trace graph</A><br>
+</UL>
+<span class="result">RESULT event(<span class="fun">kenbstarTE</span>(<span class="var">k_64</span>)) <span class="conn">==&gt;</span> (event(<span class="fun">kenbstarSE</span>(<span class="var">k_64</span>)) <span class="conn">&amp;&amp;</span> event(<span class="fun">kenbstarUE</span>(<span class="var">k_64</span>))) is <span class="falseresult">false</span>.</span><br>
+<LI><span class="query">Query event(<span class="fun">endTransferTE</span>(<span class="var">b1_65</span>)) <span class="conn">==&gt;</span> event(<span class="fun">startTransfer</span>(<span class="var">b2_66</span>))</span><br>
+<A HREF="clauses10.html" TARGET="clauses">Clauses</A><br>
+<A HREF="compclauses10.html">Completed clauses</A><br>
+<UL>
+<LI>goal reachable: <span class="pred">attacker</span>(<span class="var">b1_13277</span>) <span class="conn">&amp;&amp;</span> <span class="pred">begin</span>(<span class="fun">startTransfer</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))))) <span class="conn">-&gt;</span> <span class="pred">end</span>(<span class="fun">endTransferTE</span>(<span class="var">b1_13277</span>))<br>
+<LI>goal reachable: <span class="pred">attacker</span>(<span class="var">b1_13279</span>) <span class="conn">&amp;&amp;</span> <span class="pred">begin</span>(<span class="fun">startTransfer</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="fun">kdf</span>(<span class="name">cellidSource</span>[],<span class="name">keyAKA</span>[])),<span class="name">hndCMDACK</span>[]))) <span class="conn">-&gt;</span> <span class="pred">end</span>(<span class="fun">endTransferTE</span>(<span class="var">b1_13279</span>))<br>
+<LI>goal reachable: <span class="pred">attacker</span>(<span class="var">b1_13281</span>) <span class="conn">&amp;&amp;</span> <span class="pred">begin</span>(<span class="fun">startTransfer</span>(<span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a1</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_13282</span>,radioSignal_35 = <span class="var">radioSignal_13283</span>])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">radioSignal_13283</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">PCI_13282</span>) <span class="conn">-&gt;</span> <span class="pred">end</span>(<span class="fun">endTransferTE</span>(<span class="var">b1_13281</span>))<br>
+<LI>goal reachable: <span class="pred">attacker</span>(<span class="var">b1_13287</span>) <span class="conn">&amp;&amp;</span> <span class="pred">begin</span>(<span class="fun">startTransfer</span>(<span class="name">snTransfer</span>[sigma2 = <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">a2</span>[],<span class="name">hndCMD</span>[]),<span class="name">skTE</span>[]),PCI_36 = <span class="var">PCI_13288</span>,radioSignal_35 = <span class="var">radioSignal_13289</span>])) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">radioSignal_13289</span>) <span class="conn">&amp;&amp;</span> <span class="pred">attacker</span>(<span class="var">PCI_13288</span>) <span class="conn">-&gt;</span> <span class="pred">end</span>(<span class="fun">endTransferTE</span>(<span class="var">b1_13287</span>))<br>
+</UL>
+<span class="result">RESULT event(<span class="fun">endTransferTE</span>(<span class="var">b1_65</span>)) <span class="conn">==&gt;</span> event(<span class="fun">startTransfer</span>(<span class="var">b2_66</span>)) is <span class="trueresult">true</span>.</span><br>
+</UL>
+</body>
+</html>

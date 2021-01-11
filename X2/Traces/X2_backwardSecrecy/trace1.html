@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: trace for query 1</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Trace</H1>
+<span class="keyword">new</span> <span class="name">a1</span>: <span class="type">alg</span> creating <span class="name">a1_2628</span> at <a href="process_0.html#occ1" target="process" class="occ">{1}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">a2</span>: <span class="type">alg</span> creating <span class="name">a2_2629</span> at <a href="process_0.html#occ2" target="process" class="occ">{2}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">keyAKA</span>: <span class="type">key</span> creating <span class="name">keyAKA_2640</span> at <a href="process_0.html#occ3" target="process" class="occ">{3}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">kenb</span>: <span class="type">key</span> creating <span class="name">kenb_2641</span> at <a href="process_0.html#occ4" target="process" class="occ">{4}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">skSE</span>: <span class="type">sskey</span> creating <span class="name">skSE_2630</span> at <a href="process_0.html#occ5" target="process" class="occ">{5}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">skTE</span>: <span class="type">sskey</span> creating <span class="name">skTE_2642</span> at <a href="process_0.html#occ6" target="process" class="occ">{6}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">skMME</span>: <span class="type">sskey</span> creating <span class="name">skMME_2643</span> at <a href="process_0.html#occ7" target="process" class="occ">{7}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">cellidSource</span>: <span class="type">bitstring</span> creating <span class="name">cellidSource_2818</span> at <a href="process_0.html#occ11" target="process" class="occ">{11}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">cellidTarget</span>: <span class="type">bitstring</span> creating <span class="name">cellidTarget_2819</span> at <a href="process_0.html#occ12" target="process" class="occ">{12}</a><br>
+<br>
+<span class="keyword">out</span>(<span class="name">pubch</span>, <span class="fun"></span>(<span class="fun">consset</span>(<span class="var">~M_2880</span>,<span class="fun">consset</span>(<span class="var">~M_2882</span>,<span class="var">~M_2883</span>)),<span class="var">~M_2878</span>,<span class="var">~M_2879</span>)) with <span class="var">~M_2880</span> = <span class="name">a1_2628</span>, <span class="var">~M_2882</span> = <span class="name">a2_2629</span>, <span class="var">~M_2883</span> = <span class="fun">emptyset</span>, <span class="var">~M_2878</span> = <span class="name">cellidSource_2818</span>, <span class="var">~M_2879</span> = <span class="name">cellidTarget_2819</span> at <a href="process_0.html#occ14" target="process" class="occ">{14}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">radioSignal</span>: <span class="type">bitstring</span> creating <span class="name">radioSignal_3098</span> at <a href="process_0.html#occ19" target="process" class="occ">{19}</a><br>
+<br>
+<span class="keyword">new</span> <span class="name">PCI</span>: <span class="type">bitstring</span> creating <span class="name">PCI_3099</span> at <a href="process_0.html#occ20" target="process" class="occ">{20}</a><br>
+<br>
+<span class="keyword">event</span> <span class="fun">UESendsMeasurementReport</span>(<span class="name">radioSignal_3098</span>,<span class="name">PCI_3099</span>) at <a href="process_0.html#occ21" target="process" class="occ">{21}</a><br>
+<br>
+<span class="keyword">out</span>(<span class="name">pubch</span>, <span class="fun"></span>(<span class="var">~M_3102</span>,<span class="var">~M_3103</span>)) with <span class="var">~M_3102</span> = <span class="name">radioSignal_3098</span>, <span class="var">~M_3103</span> = <span class="name">PCI_3099</span> at <a href="process_0.html#occ22" target="process" class="occ">{22}</a><br>
+<br>
+<span class="keyword">in</span>(<span class="name">pubch</span>, <span class="fun"></span>(<span class="name">a_2626</span>,<span class="name">a_2627</span>)) at <a href="process_0.html#occ30" target="process" class="occ">{30}</a><br>
+<br>
+<span class="keyword">event</span> <span class="fun">SNSendsHORequiredToTE</span>(<span class="name">cellidSource_2818</span>) at <a href="process_0.html#occ31" target="process" class="occ">{31}</a><br>
+<br>
+<span class="keyword">event</span> <span class="fun">kenbstarSE</span>(<span class="name">kenbstar</span>) at <a href="process_0.html#occ32" target="process" class="occ">{32}</a><br>
+<br>
+<span class="keyword">out</span>(<span class="name">pubch</span>, <span class="var">~M_3123</span>) with <span class="var">~M_3123</span> = <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">kenbstar</span>,<span class="fun">consset</span>(<span class="name">a1_2628</span>,<span class="fun">consset</span>(<span class="name">a2_2629</span>,<span class="fun">emptyset</span>))),<span class="name">skSE_2630</span>) at <a href="process_0.html#occ34" target="process" class="occ">{34}</a><br>
+<br>
+The attacker has the message <span class="fun">1-proj-2-tuple</span>(<span class="fun">getmsg</span>(<span class="var">~M_3123</span>)) = <span class="name">kenbstar</span> in phase 2.<br>
+A trace has been found.<br>
+</body>
+</html>

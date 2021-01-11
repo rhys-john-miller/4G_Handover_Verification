@@ -1,0 +1,208 @@
+digraph {
+graph [ordering = out]
+edge [arrowhead = none, penwidth = 1.6, fontsize = 30]
+node [shape = point, width = 0, height = 0, fontsize = 30]
+Trace<br/>
+[label = <A trace has been found.<br/>
+>, shape = plaintext]
+P0__0 [label = "Honest Process", shape = plaintext]
+P__0 [label = "Attacker", shape = plaintext]
+Trace -> P0__0 [label = "", style = invisible, weight = 100]{rank = same; P0__0 P__0}
+P0__0 -> P0__1 [label = <>, weight = 100]
+P0__1 -> P0__2 [label = <>, weight = 100]
+P0__2 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{1}</FONT><FONT COLOR="blue">new </FONT>a1_6086</TD></TR><TR><TD><FONT COLOR="darkgreen">{2}</FONT><FONT COLOR="blue">new </FONT>a2_6087</TD></TR><TR><TD><FONT COLOR="darkgreen">{3}</FONT><FONT COLOR="blue">new </FONT>keyAKA_6085</TD></TR><TR><TD><FONT COLOR="darkgreen">{4}</FONT><FONT COLOR="blue">new </FONT>skSE_6091</TD></TR><TR><TD><FONT COLOR="darkgreen">{5}</FONT><FONT COLOR="blue">new </FONT>skTE_6090</TD></TR><TR><TD><FONT COLOR="darkgreen">{6}</FONT><FONT COLOR="blue">new </FONT>skMME_6092</TD></TR><TR><TD><FONT COLOR="darkgreen">{10}</FONT><FONT COLOR="blue">new </FONT>cellidSource_6084</TD></TR><TR><TD><FONT COLOR="darkgreen">{11}</FONT><FONT COLOR="blue">new </FONT>cellidTarget_6195</TD></TR></TABLE>>]
+P0__2 -> P0__3 [label = <>, weight = 100]
+P0__3 -> P0__4 [label = <>, weight = 100]
+P__0 -> P__1 [label = <>, weight = 100]
+{rank = same; P__1 P0__4}
+P0__4 -> P0__5 [label = <>, weight = 100]
+P__1 -> P__2 [label = <>, weight = 100]
+{rank = same; P__2 P0__5}
+P0__5 -> P__2 [label = <(consset(~M_6233,consset(~M_6235,~M_6236)),~M_6231,<br/>
+~M_6232)>, arrowhead = normal]
+P0__5 -> P0__6 [label = <>, weight = 100]
+P__2 -> P__3 [label = <>, weight = 100]
+{rank = same; P__3 P0__6}
+/*RPar */
+P0__6 -> P0_3__6 [label = <>]
+P0__6 -> P0_2__6 [label = <>]
+P0__6 -> P0_1__6 [label = <>]
+P0__6 -> P0_0__6 [label = <>]
+P0__6 [label = "", fixedsize = false, width = 0, height = 0, shape = none]
+{rank = same; P0_0__6 P0_1__6 P0_2__6 P0_3__6}
+P0_0__6 -> P0_0__7 [label = <>, weight = 100]
+P0_0__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">MME</FONT>(kdf(kdf(kdf(cellidSource_6084,<br/>
+keyAKA_6085),keyAKA_6085),keyAKA_6085), kdf(cellidSource_6084,<br/>
+keyAKA_6085), skMME_6092, spk(skTE_6090))</TD></TR></TABLE>>]
+P0_0__7 -> P0_0__8 [label = <>, weight = 100]
+P0_1__6 -> P0_1__7 [label = <>, weight = 100]
+P0_1__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">TeNodeB</FONT>(cellidTarget_6195,<br/>
+kdf(cellidSource_6084,keyAKA_6085), skTE_6090,<br/>
+spk(skSE_6091), spk(skMME_6092))</TD></TR></TABLE>>]
+P0_1__7 -> P0_1__8 [label = <>, weight = 100]
+P0_2__6 -> P0_2__7 [label = <>, weight = 100]
+P0_2__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">SeNodeB</FONT>(consset(a1_6086,consset(<br/>
+a2_6087,emptyset)), kdf(cellidSource_6084,keyAKA_6085),<br/>
+cellidSource_6084, skSE_6091, spk(skTE_6090))</TD></TR></TABLE>>]
+P0_2__7 -> P0_2__8 [label = <>, weight = 100]
+P0_3__6 -> P0_3__7 [label = <>, weight = 100]
+P0_3__7 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD>Beginning of process <FONT COLOR="darkgreen">UE</FONT>(consset(a1_6086,consset(<br/>
+a2_6087,emptyset)), kdf(cellidSource_6084,keyAKA_6085),<br/>
+cellidSource_6084)</TD></TR><TR><TD><FONT COLOR="darkgreen">{17}</FONT><FONT COLOR="blue">new </FONT>radioSignal_6088</TD></TR><TR><TD><FONT COLOR="darkgreen">{18}</FONT><FONT COLOR="blue">new </FONT>PCI_6089</TD></TR></TABLE>>]
+P0_3__7 -> P0_3__8 [label = <>, weight = 100]
+P0_3__8 -> P0_3__9 [label = <>, weight = 100]
+P0_3__9 [color = red, shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{19}</FONT><FONT COLOR="blue">event</FONT> UESendsMeasurementReport(radioSignal_6088,<br/>
+PCI_6089)</TD></TR></TABLE>>]
+P0_3__9 -> P0_3__10 [label = <>, weight = 100]
+P0_3__10 -> P0_3__11 [label = <>, weight = 100]
+P0_2__8 -> P0_2__9 [label = <>, weight = 100]
+P0_1__8 -> P0_1__9 [label = <>, weight = 100]
+P0_0__8 -> P0_0__9 [label = <>, weight = 100]
+P__3 -> P__4 [label = <>, weight = 100]
+{rank = same; P__4 P0_0__9 P0_1__9 P0_2__9 P0_3__11}
+P0_3__11 -> P0_3__12 [label = <>, weight = 100]
+P__4 -> P__5 [label = <>, weight = 100]
+{rank = same; P__5 P0_3__12}
+P0_3__12 -> P__5 [label = <(~M_6329,~M_6330) = (radioSignal_6088,PCI_6089)>, arrowhead = normal]
+P0_3__12 -> P0_3__13 [label = <>, weight = 100]
+P0_2__9 -> P0_2__10 [label = <>, weight = 100]
+P0_1__9 -> P0_1__10 [label = <>, weight = 100]
+P0_0__9 -> P0_0__10 [label = <>, weight = 100]
+P__5 -> P__6 [label = <>, weight = 100]
+{rank = same; P__6 P0_0__10 P0_1__10 P0_2__10 P0_3__13}
+P0_2__10 -> P0_2__11 [label = <>, weight = 100]
+P0_1__10 -> P0_1__11 [label = <>, weight = 100]
+P0_0__10 -> P0_0__11 [label = <>, weight = 100]
+P__6 -> P__7 [label = <>, weight = 100]
+{rank = same; P__7 P0_0__11 P0_1__11 P0_2__11}
+P0_2__11 -> P0_2__12 [label = <>, weight = 100]
+P__7 -> P__8 [label = <>, weight = 100]
+{rank = same; P__8 P0_2__12}
+P0_2__12 -> P__8 [label = <(a_6082,a_6083)>, dir = back, arrowhead = normal]
+P0_2__12 -> P0_2__13 [label = <>, weight = 100]
+P0_1__11 -> P0_1__12 [label = <>, weight = 100]
+P0_0__11 -> P0_0__12 [label = <>, weight = 100]
+P__8 -> P__9 [label = <>, weight = 100]
+{rank = same; P__9 P0_0__12 P0_1__12 P0_2__13}
+P0_2__13 -> P0_2__14 [label = <>, weight = 100]
+P0_2__14 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{30}</FONT><FONT COLOR="blue">event</FONT> SNSendsHORequiredToTE(cellidSource_6084)<br/>
+</TD></TR><TR><TD><FONT COLOR="darkgreen">{32}</FONT><FONT COLOR="blue">event</FONT> kenbstarSE(kdf(cellidSource_6084,kdf(<br/>
+cellidSource_6084,keyAKA_6085)))</TD></TR></TABLE>>]
+P0_2__14 -> P0_2__15 [label = <>, weight = 100]
+P0_2__15 -> P0_2__16 [label = <>, weight = 100]
+P0_1__12 -> P0_1__13 [label = <>, weight = 100]
+P0_0__12 -> P0_0__13 [label = <>, weight = 100]
+P__9 -> P__10 [label = <>, weight = 100]
+{rank = same; P__10 P0_0__13 P0_1__13 P0_2__16}
+P0_2__16 -> P0_2__17 [label = <>, weight = 100]
+P__10 -> P__11 [label = <>, weight = 100]
+{rank = same; P__11 P0_2__17}
+P0_2__17 -> P__11 [label = <~M_6356>, arrowhead = normal]
+P0_2__17 -> P0_2__18 [label = <>, weight = 100]
+P0_1__13 -> P0_1__14 [label = <>, weight = 100]
+P0_0__13 -> P0_0__14 [label = <>, weight = 100]
+P__11 -> P__12 [label = <>, weight = 100]
+{rank = same; P__12 P0_0__14 P0_1__14 P0_2__18}
+P0_1__14 -> P0_1__15 [label = <>, weight = 100]
+P0_0__14 -> P0_0__15 [label = <>, weight = 100]
+P__12 -> P__13 [label = <>, weight = 100]
+{rank = same; P__13 P0_0__15 P0_1__15}
+P0_1__15 -> P0_1__16 [label = <>, weight = 100]
+P__13 -> P__14 [label = <>, weight = 100]
+{rank = same; P__14 P0_1__16}
+P0_1__16 -> P__14 [label = <~M_6356>, dir = back, arrowhead = normal]
+P0_1__16 -> P0_1__17 [label = <>, weight = 100]
+P0_0__15 -> P0_0__16 [label = <>, weight = 100]
+P__14 -> P__15 [label = <>, weight = 100]
+{rank = same; P__15 P0_0__16 P0_1__17}
+P0_1__17 -> P0_1__18 [label = <>, weight = 100]
+P0_1__18 [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{48}</FONT><FONT COLOR="blue">event</FONT> TNReceivesHORequestFromSE(cellidTarget_6195)<br/>
+</TD></TR><TR><TD><FONT COLOR="darkgreen">{49}</FONT><FONT COLOR="blue">event</FONT> kenbstarTE(kdf(cellidSource_6084,kdf(<br/>
+cellidSource_6084,keyAKA_6085)))</TD></TR></TABLE>>]
+P0_1__18 -> P0_1__19 [label = <>, weight = 100]
+P0_1__19 -> P0_1__20 [label = <>, weight = 100]
+P0_0__16 -> P0_0__17 [label = <>, weight = 100]
+P__15 -> P__16 [label = <>, weight = 100]
+{rank = same; P__16 P0_0__17 P0_1__20}
+P0_1__20 -> P0_1__21 [label = <>, weight = 100]
+P__16 -> P__17 [label = <>, weight = 100]
+{rank = same; P__17 P0_1__21}
+P0_1__21 -> P__17 [label = <~M_6415 = sign((a1_6086,hndCMD),skTE_6090)>, arrowhead = normal]
+P0_1__21 -> P0_1__22 [label = <>, weight = 100]
+P0_0__17 -> P0_0__18 [label = <>, weight = 100]
+P__17 -> P__18 [label = <>, weight = 100]
+{rank = same; P__18 P0_0__18 P0_1__22}
+P0_2__18 -> P0_2__19 [label = <>, weight = 100]
+P0_1__22 -> P0_1__23 [label = <>, weight = 100]
+P0_0__18 -> P0_0__19 [label = <>, weight = 100]
+P__18 -> P__19 [label = <>, weight = 100]
+{rank = same; P__19 P0_0__19 P0_1__23 P0_2__19}
+P0_2__19 -> P0_2__20 [label = <>, weight = 100]
+P__19 -> P__20 [label = <>, weight = 100]
+{rank = same; P__20 P0_2__20}
+P0_2__20 -> P__20 [label = <~M_6415 = sign((a1_6086,hndCMD),skTE_6090)>, dir = back, arrowhead = normal]
+P0_2__20 -> P0_2__21 [label = <>, weight = 100]
+P0_1__23 -> P0_1__24 [label = <>, weight = 100]
+P0_0__19 -> P0_0__20 [label = <>, weight = 100]
+P__20 -> P__21 [label = <>, weight = 100]
+{rank = same; P__21 P0_0__20 P0_1__24 P0_2__21}
+P0_2__21 -> P0_2__22 [label = <>, weight = 100]
+P0_1__24 -> P0_1__25 [label = <>, weight = 100]
+P0_0__20 -> P0_0__21 [label = <>, weight = 100]
+P__21 -> P__22 [label = <>, weight = 100]
+{rank = same; P__22 P0_0__21 P0_1__25 P0_2__22}
+P0_2__22 -> P0_2__23 [label = <>, weight = 100]
+P__22 -> P__23 [label = <>, weight = 100]
+{rank = same; P__23 P0_2__23}
+P0_2__23 -> P__23 [label = <~M_6427 = sign((kdf(cellidSource_6084,kdf(cellidSource_6084,<br/>
+keyAKA_6085)),hndCMDACK),skSE_6091)>, arrowhead = normal]
+P0_2__23 -> P0_2__24 [label = <>, weight = 100]
+P0_1__25 -> P0_1__26 [label = <>, weight = 100]
+P0_0__21 -> P0_0__22 [label = <>, weight = 100]
+P__23 -> P__24 [label = <>, weight = 100]
+{rank = same; P__24 P0_0__22 P0_1__26 P0_2__24}
+P0_1__26 -> P0_1__27 [label = <>, weight = 100]
+P0_0__22 -> P0_0__23 [label = <>, weight = 100]
+P__24 -> P__25 [label = <>, weight = 100]
+{rank = same; P__25 P0_0__23 P0_1__27}
+P0_1__27 -> P0_1__28 [label = <>, weight = 100]
+P__25 -> P__26 [label = <>, weight = 100]
+{rank = same; P__26 P0_1__28}
+P0_1__28 -> P__26 [label = <~M_6427 = sign((kdf(cellidSource_6084,kdf(cellidSource_6084,<br/>
+keyAKA_6085)),hndCMDACK),skSE_6091)>, dir = back, arrowhead = normal]
+P0_1__28 -> P0_1__29 [label = <>, weight = 100]
+P0_0__23 -> P0_0__24 [label = <>, weight = 100]
+P__26 -> P__27 [label = <>, weight = 100]
+{rank = same; P__27 P0_0__24 P0_1__29}
+P0_1__29 -> P0_1__30 [label = <>, weight = 100]
+P0_0__24 -> P0_0__25 [label = <>, weight = 100]
+P__27 -> P__28 [label = <>, weight = 100]
+{rank = same; P__28 P0_0__25 P0_1__30}
+P0_1__30 -> P0_1__31 [label = <>, weight = 100]
+P__28 -> P__29 [label = <>, weight = 100]
+{rank = same; P__29 P0_1__31}
+P0_1__31 -> P__29 [label = <~M_6456 = okHandover>, arrowhead = normal]
+P0_1__31 -> P0_1__32 [label = <>, weight = 100]
+P0_0__25 -> P0_0__26 [label = <>, weight = 100]
+P__29 -> P__30 [label = <>, weight = 100]
+{rank = same; P__30 P0_0__26 P0_1__32}
+P0_1__32 -> P0_1__33 [label = <>, weight = 100]
+P0_0__26 -> P0_0__27 [label = <>, weight = 100]
+P__30 -> P__31 [label = <>, weight = 100]
+{rank = same; P__31 P0_0__27 P0_1__33}
+P0_1__33 -> P0_1__34 [label = <>, weight = 100]
+P__31 -> P__32 [label = <>, weight = 100]
+{rank = same; P__32 P0_1__34}
+P0_1__34 -> P__32 [label = <~M_6356>, dir = back, arrowhead = normal]
+P0_1__34 -> P0_1__35 [label = <>, weight = 100]
+P0_0__27 -> P0_0__28 [label = <>, weight = 100]
+P__32 -> P__33 [label = <>, weight = 100]
+{rank = same; P__33 P0_0__28 P0_1__35}
+P0_1__35 -> P0_1__36 [label = <>, weight = 100]
+P0_1__36 [color = red, shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"> <TR><TD><FONT COLOR="darkgreen">{60}</FONT><FONT COLOR="blue">event</FONT> startTransfer((kdf(cellidSource_6084,<br/>
+kdf(cellidSource_6084,keyAKA_6085)),consset(a1_6086,<br/>
+consset(a2_6087,emptyset))))</TD></TR></TABLE>>]
+P0_1__36 -> P0_1__37 [label = <>, weight = 100]
+Abbrev [shape = plaintext, label = <<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4"><TR> <TD> Abbreviations </TD></TR><TR><TD>~M_6233 = a1_6086</TD></TR><TR><TD>~M_6235 = a2_6087</TD></TR><TR><TD>~M_6236 = emptyset</TD></TR><TR><TD>~M_6231 = cellidSource_6084</TD></TR><TR><TD>~M_6232 = cellidTarget_6195</TD></TR><TR><TD>~M_6356 = sign((kdf(cellidSource_6084,kdf(cellidSource_6084,<br/>
+keyAKA_6085)),consset(a1_6086,consset(a2_6087,<br/>
+emptyset))),skSE_6091)</TD></TR></TABLE>>]Abbrev -> P__0 [style = invisible, weight =100]}

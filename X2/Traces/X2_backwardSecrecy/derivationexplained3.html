@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: derivation for query 3</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Explained derivation</H1>
+
+<ol>
+
+<li><a name=step1>The attacker has some term <span class="var">k_8550</span>.<br>
+<span class="pred">attacker</span>(<span class="var">k_8550</span>).<br>
+
+<li><a name=step2>The attacker has some term <span class="var">PCI_8540</span>.<br>
+<span class="pred">attacker</span>(<span class="var">PCI_8540</span>).<br>
+
+<li><a name=step3>The attacker has some term <span class="var">radioSignal_8539</span>.<br>
+<span class="pred">attacker</span>(<span class="var">radioSignal_8539</span>).<br>
+
+<li><a name=step4>By <a href="#step3">3</a>, the attacker may know <span class="var">radioSignal_8539</span>.<br>
+By <a href="#step2">2</a>, the attacker may know <span class="var">PCI_8540</span>.<br>
+Using the function <span class="fun">2-tuple</span> the attacker may obtain <span class="fun"></span>(<span class="var">radioSignal_8539</span>,<span class="var">PCI_8540</span>).<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_8539</span>,<span class="var">PCI_8540</span>)).<br>
+
+<li><a name=step5>The message <span class="fun"></span>(<span class="var">radioSignal_8539</span>,<span class="var">PCI_8540</span>) that the attacker may have by <a href="#step4">4</a> may be received at input <a href="process_0.html#occ30" target="process" class="occ">{30}</a>.<br>
+So the message <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">kenbstar</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]) may be sent to the attacker at output <a href="process_0.html#occ34" target="process" class="occ">{34}</a>.<br>
+<span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="name">kenbstar</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[])).<br>
+
+<li><a name=step6>By <a href="#step5">5</a>, the attacker may know <span class="fun">sign</span>(<span class="fun"></span>(<span class="name">kenbstar</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]).<br>
+Using the function <span class="fun">getmsg</span> the attacker may obtain <span class="fun"></span>(<span class="name">kenbstar</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+<span class="pred">attacker</span>(<span class="fun"></span>(<span class="name">kenbstar</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)))).<br>
+
+<li><a name=step7>By <a href="#step6">6</a>, the attacker may know <span class="fun"></span>(<span class="name">kenbstar</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))).<br>
+Using the function <span class="fun">1-proj-2-tuple</span> the attacker may obtain <span class="name">kenbstar</span>[].<br>
+<span class="pred">attacker</span>(<span class="name">kenbstar</span>[]).<br>
+
+<li><a name=step8>By <a href="#step7">7</a>, the attacker may know <span class="name">kenbstar</span>[].<br>
+By <a href="#step1">1</a>, the attacker may know <span class="var">k_8550</span>.<br>
+Using the function <span class="fun">sign</span> the attacker may obtain <span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>).<br>
+<span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>)).<br>
+
+<li><a name=step9>By <a href="#step8">8</a>, the attacker may know <span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>).<br>
+So the attacker may know <span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>) in phase 1.<br>
+<span class="pred">attacker_p1</span>(<span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>)).<br>
+
+<li><a name=step10>By <a href="#step9">9</a>, the attacker may know <span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>) in phase 1.<br>
+So the attacker may know <span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>) in phase 2.<br>
+<span class="pred">attacker_p2</span>(<span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>)).<br>
+
+<li><a name=step11>By <a href="#step10">10</a>, the attacker may know <span class="fun">sign</span>(<span class="name">kenbstar</span>[],<span class="var">k_8550</span>) in phase 2.<br>
+Using the function <span class="fun">getmsg</span> the attacker may obtain <span class="name">kenbstar</span>[] in phase 2.<br>
+<span class="pred">attacker_p2</span>(<span class="name">kenbstar</span>[]).<br>
+
+</ol>
+</body>
+</html>

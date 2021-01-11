@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+		      <html>
+		    <head>
+		    <title>ProVerif: derivation for query 3</title>
+		    <link rel="stylesheet" href="cssproverif.css">
+									   </head>
+									 <body>
+									 <H1>Derivation</H1>
+Abbreviations:
+<ul>
+
+<li><span class="var">cellidSource_50874</span> <span class="conn">=</span> <span class="name">cellidSource</span>[!2 = <span class="var">@sid_50863</span>,!1 = <span class="var">@sid_50864</span>]
+<li><span class="var">cellidSource_50875</span> <span class="conn">=</span> <span class="name">cellidSource</span>[!2 = <span class="var">@sid_50825</span>,!1 = <span class="var">@sid_50826</span>]
+<li><span class="var">cellidSource_50876</span> <span class="conn">=</span> <span class="name">cellidSource</span>[!2 = <span class="var">@sid_50846</span>,!1 = <span class="var">@sid_50847</span>]
+</ul>
+goal <span class="pred">combined_end_end</span>(<span class="var">endsid_50870</span>,<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_50874</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_50874</span>,<span class="name">ue1KeyAKA</span>[]))),<span class="var">endsid_50872</span>,<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_50875</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_50875</span>,<span class="name">ue1KeyAKA</span>[]))))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause36" target="clauses">clause 36</a> <span class="pred">end</span>(<span class="var">endsid_50870</span>,<span class="fun">kenbstarUE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_50874</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_50874</span>,<span class="name">ue1KeyAKA</span>[]))))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause1" target="clauses">clause 1</a> <span class="pred">mem</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply <span class="fun">1-proj-consset</span> <span class="pred">attacker</span>(<span class="name">a1</span>[])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply <span class="fun">2-proj-2-tuple</span> <span class="pred">attacker</span>(<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>)))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause9" target="clauses">clause 9</a> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_50876</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_50876</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause38" target="clauses">clause 38</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_50876</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_50876</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply <span class="fun">2-tuple</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_50844</span>,<span class="var">PCI_50845</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">radioSignal_50844</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">PCI_50845</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause42" target="clauses">clause 42</a> <span class="pred">end</span>(<span class="var">endsid_50872</span>,<span class="fun">kenbstarTE</span>(<span class="fun">kdf</span>(<span class="var">cellidSource_50875</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_50875</span>,<span class="name">ue1KeyAKA</span>[]))))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="clauses3.html#clause38" target="clauses">clause 38</a> <span class="pred">attacker</span>(<span class="fun">sign</span>(<span class="fun"></span>(<span class="fun">kdf</span>(<span class="var">cellidSource_50875</span>,<span class="fun">kdf</span>(<span class="var">cellidSource_50875</span>,<span class="name">ue1KeyAKA</span>[])),<span class="fun">consset</span>(<span class="name">a1</span>[],<span class="fun">consset</span>(<span class="name">a2</span>[],<span class="fun">emptyset</span>))),<span class="name">skSE</span>[]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apply <span class="fun">2-tuple</span> <span class="pred">attacker</span>(<span class="fun"></span>(<span class="var">radioSignal_50823</span>,<span class="var">PCI_50824</span>))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">radioSignal_50823</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any <span class="pred">attacker</span>(<span class="var">PCI_50824</span>)<br>
+</body>
+</html>
