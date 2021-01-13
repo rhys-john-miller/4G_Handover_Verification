@@ -1,0 +1,84 @@
+free pubch:channel. free secch:channel[private].free secchem:channel[private].
+
+type key. type alg. type caps. type msgheader.
+
+const HR,HRA,HC,HCF,SPSR,SPSRA,KRD:msgheader.
+
+fun consset(alg,caps):caps [data]. const emptyset:caps.
+
+fun tobitstring(key):bitstring.
+pred mem(alg,caps).
+clauses forall x:alg,y:caps;mem(x,consset(x,y));
+        forall x:alg,y:caps,z:alg;mem(x,y)->mem(x,consset(z,y)).
+
+fun mac(bitstring,key):bitstring.
+
+fun kdf(bitstring,key):key.
+
+fun senc(bitstring,key):bitstring.
+reduc forall m: bitstring, k:key; sdec(senc(m,k),k) = m.
+
+free s:bitstring[private].
+
+free kasme,nh_1,nh_2,kenb,kenbstar,kenbdstar:key[private].
+
+event kenbstarUE(key).
+event kenbstarSE(key).
+event kenbstarTE(key).
+
+query attacker(s) phase 1.
+query attacker(s) phase 0.
+
+query k:key;
+  (event(kenbstarUE(k)) ==> event(kenbstarTE(k))).
+
+(* UE and SN kenbstar *)
+
+let UE(uecaps:caps, kenb:key)=
+    in(pubch,(=HC,crnti:bitstring,a:alg));
+    if mem(a,uecaps) then
+        let kenbstar:key=kdf(tobitstring(nh_1),kenb) in
+        event kenbstarUE(kenbstar);
+        out(pubch,(HCF,senc((a,mac((HCF,a),kenbstar)),kenbstar)));
+        in(pubch,(=KRD,nasulcount:bitstring,calibration:key));
+        let calibration1:key=kdf(nasulcount,nh_2) in
+        if calibration=calibration1 then
+        let kenbdstar:key=kdf(tobitstring(nh_2),kenbstar) in
+        phase 1;
+   out(pubch,senc(s,kenbdstar));  
+   0.
+let MME(nh_2:key,nasulcount:bitstring)=
+    in(secchem,=SPSR);
+    out(secchem,(SPSRA,nh_2,nasulcount)).
+let SeNodeB(uecaps:caps, kenb:key)=
+    let kenbstar:key=kdf(tobitstring(nh_1),kenb) in
+    event kenbstarSE(kenbstar);
+    out(pubch,(HR,kenbstar,uecaps));
+    in(pubch,(=HRA,crnti:bitstring,a:alg));
+    out(pubch,(HC,crnti,a)).
+let TeNodeB()=
+    in(pubch,(=HR,kenbstar:key,uecaps:caps));
+    event kenbstarTE(kenbstar);
+    let a:alg suchthat mem(a,uecaps) in
+    new crnti:bitstring;
+    out(pubch,(HRA,crnti,a));
+    in(pubch,(=HCF,msg:bitstring));
+    let(=a,rrcmac:bitstring)=sdec(msg,kenbdstar) in
+    if rrcmac=mac((HCF,a),kenbdstar) then
+        out(secchem,SPSR);
+        in(secchem,(=SPSRA,nh_2:key,nasulcount:bitstring));
+        let calibration:key=kdf(nasulcount,nh_2) in
+        out(pubch,(KRD,nasulcount,calibration));
+        let kenbdstar:key=kdf(tobitstring(nh_2),kenbstar).
+process
+         new a1: alg; new a2:alg;
+         let uecaps=consset(a1,consset(a2,emptyset)) in
+         out(pubch,uecaps);
+         new kasme:key; new nasulcount:bitstring; 
+         let kenb:key=kdf(nasulcount,kasme) in
+         let nh_1:key=kdf(tobitstring(kenb),kasme) in
+         let nh_2:key=kdf(tobitstring(nh_1),kasme) in
+         ((!UE(uecaps, kenb))|(!SeNodeB(uecaps,kenb))|(!TeNodeB())|(!MME(nh_2,nasulcount)))
+
+         
+  
