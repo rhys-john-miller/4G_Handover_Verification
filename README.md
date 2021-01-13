@@ -28,7 +28,9 @@ The backward secrecy attacks can be found in:
 
 ### Traces
 
-Inside of this folder you will find the supporting traces for each of the queries for all of the X2 ProVerif files.
+Inside of this folder you will find the supporting traces for each of the querie
+The best way to view the traces is to download the trace file then and then
+navigate through the files via the index.html file.
 
 ## 3) S1 File Structure
 
@@ -46,7 +48,9 @@ The files above contain a main process with multiple entities UE, source Node, t
 
 ### Traces
 
-Inside of this folder you will find the supporting traces for each of the queries for all of the X2 ProVerif files.
+Inside of this folder you will find the supporting traces for each of the querie
+The best way to view the traces is to download the trace file then and then
+navigate through the files via the index.html file.
 
 ## 4) Figures
 
